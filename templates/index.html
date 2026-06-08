@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PulseIQ — Customer Analytics</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root{
+    --bg:#0f1117; --surface:#181c26; --surface2:#1e2333; --border:#2a2f42;
+    --text:#e8eaf0; --muted:#7b82a0; --accent:#3b82f6; --accent2:#10b981;
+    --warn:#f59e0b; --danger:#ef4444; --purple:#8b5cf6;
+    --radius:10px; --radius-sm:6px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:14px;min-height:100vh;}
+  a{color:var(--accent);text-decoration:none;}
+
+  /* Layout */
+  .shell{display:flex;min-height:100vh;}
+  .sidebar{width:220px;background:var(--surface);border-right:1px solid var(--border);padding:20px 0;flex-shrink:0;display:flex;flex-direction:column;}
+  .logo{padding:0 20px 24px;font-size:18px;font-weight:700;letter-spacing:-0.4px;}
+  .logo span{color:var(--accent);}
+  .nav-label{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;padding:0 20px 8px;}
+  .nav-item{display:flex;align-items:center;gap:10px;padding:9px 20px;cursor:pointer;color:var(--muted);border-left:2px solid transparent;transition:all .15s;}
+  .nav-item:hover{color:var(--text);background:var(--surface2);}
+  .nav-item.active{color:var(--accent);border-left-color:var(--accent);background:rgba(59,130,246,.07);}
+  .nav-icon{font-size:16px;width:18px;text-align:center;}
+  .main{flex:1;overflow:auto;}
+  .topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+  .topbar-title{font-size:16px;font-weight:600;}
+  .content{padding:24px;}
+
+  /* Pages */
+  .page{display:none;} .page.active{display:block;}
+
+  /* Cards */
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;}
+  .card-title{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:14px;display:flex;align-items:center;gap:6px;}
+  .metric-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:20px;}
+  .metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;}
+  .metric-label{font-size:11px;color:var(--muted);margin-bottom:6px;}
+  .metric-value{font-size:24px;font-weight:700;line-height:1;}
+  .metric-sub{font-size:11px;margin-top:4px;}
+  .green{color:var(--accent2);} .red{color:var(--danger);} .yellow{color:var(--warn);} .blue{color:var(--accent);} .purple{color:var(--purple);}
+
+  .charts-row{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;margin-bottom:16px;}
+  .charts-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px;}
+  .full-card{margin-bottom:16px;}
+
+  /* Filters */
+  .filters{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;margin-bottom:20px;display:flex;flex-wrap:wrap;align-items:center;gap:12px;}
+  .filter-label{font-size:11px;color:var(--muted);margin-bottom:3px;}
+  .filter-group{display:flex;flex-direction:column;}
+  select,input[type=range]{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);padding:5px 10px;font-size:12px;cursor:pointer;}
+  select:focus{outline:none;border-color:var(--accent);}
+  .btn{padding:7px 16px;border-radius:var(--radius-sm);border:none;cursor:pointer;font-size:12px;font-weight:600;transition:all .15s;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#2563eb;}
+  .btn-danger{background:var(--danger);color:#fff;}
+  .btn-success{background:var(--accent2);color:#fff;}
+  .btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border);}
+  .btn-ghost:hover{color:var(--text);}
+
+  /* Table */
+  .table-wrap{overflow-x:auto;}
+  table{width:100%;border-collapse:collapse;}
+  th{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap;}
+  td{padding:10px 12px;border-bottom:1px solid var(--border);font-size:13px;white-space:nowrap;}
+  tr:hover td{background:var(--surface2);}
+  .badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600;}
+  .badge-churn{background:rgba(239,68,68,.15);color:#ef4444;}
+  .badge-safe{background:rgba(16,185,129,.12);color:#10b981;}
+  .badge-high{background:rgba(139,92,246,.15);color:#8b5cf6;}
+  .badge-medium{background:rgba(245,158,11,.12);color:#f59e0b;}
+  .badge-low{background:rgba(107,114,128,.12);color:#9ca3af;}
+  .badge-seg0{background:rgba(59,130,246,.13);color:#60a5fa;}
+  .badge-seg1{background:rgba(16,185,129,.13);color:#34d399;}
+  .badge-seg2{background:rgba(239,68,68,.13);color:#f87171;}
+  .badge-seg3{background:rgba(156,163,175,.13);color:#9ca3af;}
+
+  .progress-bar{height:6px;background:var(--surface2);border-radius:3px;overflow:hidden;width:80px;display:inline-block;vertical-align:middle;}
+  .progress-fill{height:100%;border-radius:3px;}
+
+  .pagination{display:flex;align-items:center;gap:8px;padding:12px 0;justify-content:flex-end;}
+  .page-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:5px 11px;border-radius:var(--radius-sm);cursor:pointer;font-size:12px;}
+  .page-btn:hover,.page-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+  /* Modal */
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;align-items:center;justify-content:center;}
+  .modal-overlay.open{display:flex;}
+  .modal{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;width:680px;max-width:95vw;max-height:90vh;overflow-y:auto;}
+  .modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+  .modal-title{font-size:16px;font-weight:600;}
+  .close-btn{background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;line-height:1;}
+  .close-btn:hover{color:var(--text);}
+
+  /* Customer detail */
+  .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+  .detail-item{background:var(--surface2);border-radius:var(--radius-sm);padding:10px 12px;}
+  .detail-key{font-size:11px;color:var(--muted);margin-bottom:2px;}
+  .detail-val{font-size:14px;font-weight:600;}
+  .rec-card{background:var(--surface2);border-radius:var(--radius-sm);padding:12px 14px;display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+  .rec-left{display:flex;flex-direction:column;gap:3px;}
+  .rec-product{font-size:13px;font-weight:600;}
+  .rec-reason{font-size:11px;color:var(--muted);}
+  .confidence-bar{display:flex;align-items:center;gap:6px;}
+  .conf-label{font-size:11px;color:var(--muted);}
+
+  /* Predict form */
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+  .form-group label{display:block;font-size:11px;color:var(--muted);margin-bottom:5px;}
+  .form-group input,.form-group select{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);padding:8px 10px;font-size:13px;}
+  .predict-result{background:var(--surface2);border-radius:var(--radius);padding:18px;margin-top:16px;}
+  .predict-result.hide{display:none;}
+  .result-risk{font-size:28px;font-weight:700;margin-bottom:4px;}
+  .churn-meter{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin:8px 0;}
+  .churn-fill{height:100%;border-radius:4px;transition:width .6s ease;}
+
+  /* Segment page */
+  .seg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:16px;}
+  .seg-card{border-left:3px solid;padding:14px 16px;}
+
+  /* Model page */
+  .model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
+  .feat-bar{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+  .feat-name{width:160px;font-size:12px;color:var(--muted);}
+  .feat-fill-wrap{flex:1;height:6px;background:var(--surface2);border-radius:3px;overflow:hidden;}
+  .feat-fill{height:100%;border-radius:3px;background:var(--accent);}
+  .feat-val{font-size:12px;width:36px;text-align:right;}
+
+  /* Spinner */
+  .spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:6px;}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* Chart containers */
+  .chart-container{position:relative;}
+  canvas{width:100%!important;}
+
+  /* Tooltips & misc */
+  .loading{text-align:center;padding:30px;color:var(--muted);}
+  .tag{display:inline-block;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:2px 10px;font-size:11px;color:var(--muted);margin:2px;}
+  .section-title{font-size:15px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .divider{height:1px;background:var(--border);margin:16px 0;}
+  .empty{text-align:center;padding:40px;color:var(--muted);}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="logo"><span>Pulse</span>IQ</div>
+  <div class="nav-label">Analytics</div>
+  <div class="nav-item active" onclick="showPage('dashboard')">
+    <span class="nav-icon">📊</span> Dashboard
+  </div>
+  <div class="nav-item" onclick="showPage('customers')">
+    <span class="nav-icon">👥</span> Customers
+  </div>
+  <div class="nav-item" onclick="showPage('segments')">
+    <span class="nav-icon">🔵</span> Segments
+  </div>
+  <div class="nav-label" style="margin-top:16px;">ML Models</div>
+  <div class="nav-item" onclick="showPage('churnpred')">
+    <span class="nav-icon">⚠️</span> Churn Prediction
+  </div>
+  <div class="nav-item" onclick="showPage('predict')">
+    <span class="nav-icon">🎯</span> Customer Prediction
+  </div>
+  <div class="nav-item" onclick="showPage('recommend')">
+    <span class="nav-icon">🛒</span> Recommendation
+  </div>
+  <div class="nav-item" onclick="showPage('model')">
+    <span class="nav-icon">🧠</span> Model Stats
+  </div>
+</aside>
+
+<!-- Main -->
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-title" id="page-title">Dashboard Overview</div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <span style="font-size:11px;color:var(--muted);" id="last-updated"></span>
+      <span class="badge badge-safe">● ML Active</span>
+    </div>
+  </div>
+  <div class="content">
+
+  <!-- ══ DASHBOARD PAGE ══ -->
+  <div id="page-dashboard" class="page active">
+    <!-- Filters -->
+    <div class="filters">
+      <span style="font-size:12px;font-weight:600;color:var(--muted);margin-right:4px;">🔽 Filters</span>
+      <div class="filter-group">
+        <div class="filter-label">Region</div>
+        <select id="f-region" onchange="loadDashboard()"><option>All</option></select>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">Income</div>
+        <select id="f-income" onchange="loadDashboard()"><option>All</option></select>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">Segment</div>
+        <select id="f-segment" onchange="loadDashboard()"><option>All</option></select>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">Churn Status</div>
+        <select id="f-churn" onchange="loadDashboard()"><option>All</option></select>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">LTV Score ≥ <span id="ltv-val">0</span></div>
+        <input type="range" id="f-ltv" min="0" max="100" value="0" style="width:120px;" oninput="document.getElementById('ltv-val').innerText=this.value;loadDashboard()">
+      </div>
+      <button class="btn btn-ghost" onclick="resetFilters()">↺ Reset</button>
+    </div>
+
+    <!-- Metrics -->
+    <div class="metric-grid" id="metrics-grid">
+      <div class="metric"><div class="metric-label">Total Customers</div><div class="metric-value blue" id="m-total">—</div><div class="metric-sub">in selection</div></div>
+      <div class="metric"><div class="metric-label">Churn Risk</div><div class="metric-value red" id="m-churn">—</div><div class="metric-sub green" id="m-churn-rate">—</div></div>
+      <div class="metric"><div class="metric-label">Avg LTV Score</div><div class="metric-value purple" id="m-ltv">—</div><div class="metric-sub">out of 100</div></div>
+      <div class="metric"><div class="metric-label">Avg Spend</div><div class="metric-value green" id="m-spent">—</div><div class="metric-sub">per customer</div></div>
+      <div class="metric"><div class="metric-label">Churn Probability</div><div class="metric-value yellow" id="m-prob">—</div><div class="metric-sub">avg across segment</div></div>
+      <div class="metric"><div class="metric-label">Model Accuracy</div><div class="metric-value green" id="m-acc">—</div><div class="metric-sub">GBM classifier</div></div>
+    </div>
+
+    <!-- Row 1: Segment donut + Revenue by Region -->
+    <div class="charts-row">
+      <div class="card">
+        <div class="card-title">📈 Revenue Trend by Recency</div>
+        <div class="chart-container" style="height:240px"><canvas id="c-trend"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🔵 Customer Segments</div>
+        <div class="chart-container" style="height:240px"><canvas id="c-segments"></canvas></div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="charts-row3">
+      <div class="card">
+        <div class="card-title">🌍 Revenue by Region</div>
+        <div class="chart-container" style="height:200px"><canvas id="c-region"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">⚠️ Churn Rate by Income</div>
+        <div class="chart-container" style="height:200px"><canvas id="c-churn-income"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 LTV Distribution</div>
+        <div class="chart-container" style="height:200px"><canvas id="c-ltv-dist"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ CUSTOMERS PAGE ══ -->
+  <div id="page-customers" class="page">
+    <div class="filters">
+      <span style="font-size:12px;font-weight:600;color:var(--muted);margin-right:4px;">🔽 Filters</span>
+      <div class="filter-group">
+        <div class="filter-label">Region</div>
+        <select id="cf-region" onchange="loadCustomers(1)"><option>All</option></select>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">Income</div>
+        <select id="cf-income" onchange="loadCustomers(1)"><option>All</option></select>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">Segment</div>
+        <select id="cf-segment" onchange="loadCustomers(1)"><option>All</option></select>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">Churn</div>
+        <select id="cf-churn" onchange="loadCustomers(1)"><option>All</option></select>
+      </div>
+      <button class="btn btn-ghost" onclick="resetCFilters()">↺ Reset</button>
+    </div>
+    <div class="card full-card">
+      <div class="card-title">👥 Customer List <span id="cust-count" style="color:var(--accent);font-size:12px;margin-left:6px;"></span></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th><th>Name</th><th>Age</th><th>Region</th><th>Income Seg</th>
+              <th>Purchases</th><th>Avg Order</th><th>Total Spent</th><th>LTV</th>
+              <th>Segment</th><th>Churn Prob</th><th>Status</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="cust-tbody">
+            <tr><td colspan="13" class="loading"><span class="spinner"></span>Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </div>
+
+  <!-- ══ SEGMENTS PAGE ══ -->
+  <div id="page-segments" class="page">
+    <div class="seg-grid" id="seg-cards"></div>
+    <div class="charts-row">
+      <div class="card">
+        <div class="card-title">📊 Segment LTV Comparison</div>
+        <div class="chart-container" style="height:250px"><canvas id="c-seg-ltv"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">💰 Avg Spend by Segment</div>
+        <div class="chart-container" style="height:250px"><canvas id="c-seg-spend"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PREDICT PAGE ══ -->
+  <!-- ══ PREDICTION PAGE ══ -->
+  <!-- ══ CHURN PREDICTION PAGE ══ -->
+  <div id="page-churnpred" class="page">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <!-- Input Form -->
+      <div class="card">
+        <div class="card-title">⚠️ Churn Prediction — Enter Customer Details</div>
+        <div class="form-grid">
+          <div class="form-group"><label>Age</label><input type="number" id="cp-age" value="35" min="18" max="70"></div>
+          <div class="form-group"><label>Income Segment</label>
+            <select id="cp-income"><option>Low</option><option selected>Medium</option><option>High</option></select></div>
+          <div class="form-group"><label>Loyalty Years</label><input type="number" id="cp-loyalty" value="2" step="0.5"></div>
+          <div class="form-group"><label>Avg Order Value (₹)</label><input type="number" id="cp-aov" value="2000"></div>
+          <div class="form-group"><label>Support Tickets</label><input type="number" id="cp-tickets" value="1" min="0" max="20"></div>
+          <div class="form-group"><label>Email Open Rate (0–1)</label><input type="number" id="cp-email" value="0.4" step="0.05" min="0" max="1"></div>
+          <div class="form-group"><label>App Sessions/Month</label><input type="number" id="cp-sessions" value="12"></div>
+          <div class="form-group"><label>Preferred Category</label>
+            <select id="cp-cat">
+              <option>Electronics</option><option>Clothing</option><option>Groceries</option>
+              <option>Beauty</option><option>Sports</option><option>Home &amp; Kitchen</option>
+              <option>Books</option><option>Toys</option>
+            </select></div>
+        </div>
+        <div style="margin-bottom:12px;">
+          <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:6px;">Recency Score (0–100) — <span id="cp-rec-lbl">60</span></label>
+          <input type="range" id="cp-recency" min="0" max="100" value="60" style="width:100%;" oninput="document.getElementById('cp-rec-lbl').innerText=this.value">
+        </div>
+        <div style="margin-bottom:12px;">
+          <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:6px;">Frequency Score (0–100) — <span id="cp-freq-lbl">40</span></label>
+          <input type="range" id="cp-frequency" min="0" max="100" value="40" style="width:100%;" oninput="document.getElementById('cp-freq-lbl').innerText=this.value">
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:6px;">Monetary Score (0–100) — <span id="cp-mon-lbl">50</span></label>
+          <input type="range" id="cp-monetary" min="0" max="100" value="50" style="width:100%;" oninput="document.getElementById('cp-mon-lbl').innerText=this.value">
+        </div>
+        <button class="btn btn-danger" style="width:100%;padding:10px;" onclick="runChurnPredict()">
+          ⚠️ Predict Churn
+        </button>
+      </div>
+
+      <!-- Churn Result -->
+      <div>
+        <div id="churnpred-result" class="card hide">
+          <div class="card-title">⚠️ Churn Prediction Result</div>
+
+          <!-- Risk -->
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+            <div id="cp-risk-label" style="font-size:26px;font-weight:700;"></div>
+            <div id="cp-risk-badge" style="font-size:12px;padding:5px 14px;border-radius:20px;font-weight:600;"></div>
+          </div>
+
+          <!-- Meter -->
+          <div style="font-size:12px;color:var(--muted);margin-bottom:5px;">Churn Probability</div>
+          <div class="churn-meter" style="height:12px;"><div class="churn-fill" id="cp-churn-fill"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:16px;">
+            <span>0%</span>
+            <span id="cp-churn-pct" style="font-weight:700;font-size:18px;"></span>
+            <span>100%</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- Input data display -->
+          <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin:12px 0 8px;">📋 Input Data</div>
+          <div id="cp-input-data" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;"></div>
+
+          <div class="divider"></div>
+
+          <!-- RFM scores -->
+          <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin:12px 0 8px;">📊 RFM Scores</div>
+          <div id="cp-rfm-scores" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px;"></div>
+
+          <div class="divider"></div>
+
+          <!-- LTV + accuracy -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px;">
+            <div class="detail-item"><div class="detail-key">LTV Score</div><div class="detail-val purple" id="cp-ltv"></div></div>
+            <div class="detail-item"><div class="detail-key">Churn Decision</div><div class="detail-val" id="cp-decision"></div></div>
+            <div class="detail-item"><div class="detail-key">Model Accuracy</div><div class="detail-val green" id="cp-acc"></div></div>
+          </div>
+        </div>
+
+        <div id="churnpred-empty" class="card" style="text-align:center;padding:50px;color:var(--muted);">
+          <div style="font-size:52px;margin-bottom:14px;">⚠️</div>
+          <div style="font-size:15px;font-weight:600;margin-bottom:8px;">Churn Prediction</div>
+          <div style="font-size:13px;">Enter customer details — age, income, loyalty, RFM scores — and click <strong>Predict Churn</strong> to see churn probability, risk level, and full input data summary.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ CUSTOMER PREDICTION PAGE ══ -->
+  <div id="page-predict" class="page">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <!-- Input Form -->
+      <div class="card">
+        <div class="card-title">🎯 Customer Prediction — Profile Inputs</div>
+        <div class="form-grid">
+          <div class="form-group"><label>Age</label><input type="number" id="p-age" value="35" min="18" max="70"></div>
+          <div class="form-group"><label>Income (₹/year)</label><input type="number" id="p-income-val" value="50000"></div>
+          <div class="form-group"><label>Income Segment</label>
+            <select id="p-income"><option>Low</option><option selected>Medium</option><option>High</option></select></div>
+          <div class="form-group"><label>Total Purchases</label><input type="number" id="p-purchases" value="10" min="0"></div>
+          <div class="form-group"><label>Avg Order Value (₹)</label><input type="number" id="p-aov" value="2000"></div>
+          <div class="form-group"><label>Total Spent (₹)</label><input type="number" id="p-spent" value="20000"></div>
+          <div class="form-group"><label>Loyalty Years</label><input type="number" id="p-loyalty" value="2" step="0.5"></div>
+          <div class="form-group"><label>App Sessions/Month</label><input type="number" id="p-sessions" value="12"></div>
+        </div>
+        <div style="margin-bottom:12px;">
+          <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:6px;">Recency Score (0–100) — <span id="rec-lbl">60</span></label>
+          <input type="range" id="p-recency" min="0" max="100" value="60" style="width:100%;" oninput="document.getElementById('rec-lbl').innerText=this.value">
+        </div>
+        <div style="margin-bottom:12px;">
+          <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:6px;">Frequency Score (0–100) — <span id="freq-lbl">40</span></label>
+          <input type="range" id="p-frequency" min="0" max="100" value="40" style="width:100%;" oninput="document.getElementById('freq-lbl').innerText=this.value">
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:6px;">Monetary Score (0–100) — <span id="mon-lbl">50</span></label>
+          <input type="range" id="p-monetary" min="0" max="100" value="50" style="width:100%;" oninput="document.getElementById('mon-lbl').innerText=this.value">
+        </div>
+        <button class="btn btn-primary" style="width:100%;padding:10px;" onclick="runPredict()">
+          🎯 Predict Customer Profile
+        </button>
+      </div>
+
+      <!-- Prediction Result -->
+      <div>
+        <div id="predict-result" class="card hide">
+          <div class="card-title">🎯 Predicted Customer Data</div>
+
+          <!-- Segment + LTV banner -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
+            <div style="background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.3);border-radius:8px;padding:14px;text-align:center;">
+              <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">PREDICTED SEGMENT</div>
+              <div id="pred-segment" style="font-size:18px;font-weight:700;color:#a78bfa;"></div>
+            </div>
+            <div style="background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.3);border-radius:8px;padding:14px;text-align:center;">
+              <div style="font-size:11px;color:var(--muted);margin-bottom:4px;">LTV SCORE</div>
+              <div id="pred-ltv" style="font-size:28px;font-weight:700;color:#60a5fa;"></div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- All input data display -->
+          <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin:12px 0 8px;">📋 Age, Income & Purchase Data</div>
+          <div id="pred-profile-data" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px;"></div>
+
+          <div class="divider"></div>
+
+          <!-- RFM + engagement -->
+          <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin:12px 0 8px;">📊 Scores & Engagement</div>
+          <div id="pred-scores-data" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px;"></div>
+
+          <div class="divider"></div>
+
+          <!-- Derived metrics -->
+          <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin:12px 0 8px;">💡 Derived Metrics</div>
+          <div id="pred-derived" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px;"></div>
+
+          <!-- Model accuracy -->
+          <div style="margin-top:10px;text-align:right;font-size:11px;color:var(--muted);">
+            Model Accuracy: <span id="pred-acc" style="color:var(--accent2);font-weight:600;"></span>
+          </div>
+        </div>
+
+        <div id="predict-empty" class="card" style="text-align:center;padding:50px;color:var(--muted);">
+          <div style="font-size:52px;margin-bottom:14px;">🎯</div>
+          <div style="font-size:15px;font-weight:600;margin-bottom:8px;">Customer Prediction</div>
+          <div style="font-size:13px;">Enter age, income, total purchases and other inputs on the left, then click <strong>Predict Customer Profile</strong> to see the predicted segment, LTV score, and a full breakdown of all the data entered.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ RECOMMENDATION PAGE ══ -->
+  <div id="page-recommend" class="page">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <!-- Input Form -->
+      <div class="card">
+        <div class="card-title">🛒 Product Recommendation — Customer Profile</div>
+
+        <div style="margin-bottom:14px;">
+          <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px;">Recent Purchases (select all that apply)</div>
+          <div id="recent-purchase-checkboxes" style="display:flex;flex-wrap:wrap;gap:8px;">
+            <label class="rec-check-label" style="display:flex;align-items:center;gap:5px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:5px 12px;cursor:pointer;font-size:12px;">
+              <input type="checkbox" value="Electronics" onchange="updateRecChecks()"> Electronics
+            </label>
+            <label class="rec-check-label" style="display:flex;align-items:center;gap:5px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:5px 12px;cursor:pointer;font-size:12px;">
+              <input type="checkbox" value="Clothing" onchange="updateRecChecks()"> Clothing
+            </label>
+            <label class="rec-check-label" style="display:flex;align-items:center;gap:5px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:5px 12px;cursor:pointer;font-size:12px;">
+              <input type="checkbox" value="Groceries" onchange="updateRecChecks()"> Groceries
+            </label>
+            <label class="rec-check-label" style="display:flex;align-items:center;gap:5px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:5px 12px;cursor:pointer;font-size:12px;">
+              <input type="checkbox" value="Beauty" onchange="updateRecChecks()"> Beauty
+            </label>
+            <label class="rec-check-label" style="display:flex;align-items:center;gap:5px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:5px 12px;cursor:pointer;font-size:12px;">
+              <input type="checkbox" value="Sports" onchange="updateRecChecks()"> Sports
+            </label>
+            <label class="rec-check-label" style="display:flex;align-items:center;gap:5px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:5px 12px;cursor:pointer;font-size:12px;">
+              <input type="checkbox" value="Home &amp; Kitchen" onchange="updateRecChecks()"> Home &amp; Kitchen
+            </label>
+            <label class="rec-check-label" style="display:flex;align-items:center;gap:5px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:5px 12px;cursor:pointer;font-size:12px;">
+              <input type="checkbox" value="Books" onchange="updateRecChecks()"> Books
+            </label>
+            <label class="rec-check-label" style="display:flex;align-items:center;gap:5px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:5px 12px;cursor:pointer;font-size:12px;">
+              <input type="checkbox" value="Toys" onchange="updateRecChecks()"> Toys
+            </label>
+          </div>
+          <div style="font-size:11px;color:var(--muted);margin-top:6px;">Selected: <span id="rec-selected-display" style="color:var(--accent);">None</span></div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group"><label>Income Segment</label>
+            <select id="r-income"><option>Low</option><option selected>Medium</option><option>High</option></select></div>
+          <div class="form-group"><label>Preferred Category</label>
+            <select id="r-cat">
+              <option>Electronics</option><option>Clothing</option><option>Groceries</option>
+              <option>Beauty</option><option>Sports</option><option>Home &amp; Kitchen</option>
+              <option>Books</option><option>Toys</option>
+            </select></div>
+          <div class="form-group"><label>Total Purchases</label><input type="number" id="r-purchases" value="10" min="0"></div>
+          <div class="form-group"><label>Avg Order Value (₹)</label><input type="number" id="r-aov" value="2000"></div>
+          <div class="form-group"><label>Total Spent (₹)</label><input type="number" id="r-spent" value="20000"></div>
+          <div class="form-group"><label>Loyalty Years</label><input type="number" id="r-loyalty" value="2" step="0.5"></div>
+        </div>
+
+        <button class="btn btn-success" style="width:100%;padding:10px;margin-top:4px;" onclick="runRecommend()">
+          🛒 Get Recommendations
+        </button>
+      </div>
+
+      <!-- Recommendation Result -->
+      <div>
+        <div id="recommend-result" class="card hide">
+          <div class="card-title">✨ Recommended Products</div>
+
+          <!-- Profile summary -->
+          <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;">Customer Profile Used</div>
+          <div id="rec-profile-summary" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;"></div>
+
+          <div style="margin-bottom:10px;">
+            <span style="font-size:11px;color:var(--muted);">Recent purchases: </span>
+            <span id="rec-tags-display"></span>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- Recommendation cards -->
+          <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin:12px 0 8px;">Products For You</div>
+          <div id="rec-cards"></div>
+
+          <div class="divider"></div>
+
+          <!-- Why these recs -->
+          <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin:12px 0 8px;">Why These Recommendations?</div>
+          <div id="rec-reasons"></div>
+        </div>
+
+        <div id="recommend-empty" class="card" style="text-align:center;padding:40px;color:var(--muted);">
+          <div style="font-size:48px;margin-bottom:14px;">🛒</div>
+          <div style="font-size:15px;font-weight:600;margin-bottom:8px;">Product Recommendations</div>
+          <div style="font-size:13px;">Select the customer's recent purchase categories, income segment, and spending details on the left and click <strong>Get Recommendations</strong> to see personalised product suggestions here.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ MODEL PAGE ══ -->
+  <div id="page-model" class="page">
+    <div class="model-grid" id="model-metrics"></div>
+    <div class="charts-row">
+      <div class="card">
+        <div class="card-title">📊 Classification Report</div>
+        <div class="chart-container" style="height:250px"><canvas id="c-model-bar"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🔑 Feature Importance</div>
+        <div id="feat-importance"></div>
+      </div>
+    </div>
+  </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+</div><!-- /shell -->
+
+<!-- Customer Detail Modal -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">Customer Detail</div>
+      <button class="close-btn" onclick="closeModal()">✕</button>
+    </div>
+    <div id="modal-body"><div class="loading"><span class="spinner"></span>Loading...</div></div>
+  </div>
+</div>
+
+<script>
+const API = '';
+let charts = {};
+let currentPage = 1;
+
+// ── Navigation ────────────────────────────────────────────────────────────────
+const pageTitles = {
+  dashboard:'Dashboard Overview', customers:'Customer List',
+  segments:'Customer Segments', churnpred:'Churn Prediction', predict:'Customer Prediction', recommend:'Product Recommendation', model:'Model Performance'
+};
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n=>{
+    if(n.getAttribute('onclick')&&n.getAttribute('onclick').includes(name)) n.classList.add('active');
+  });
+  document.getElementById('page-title').innerText = pageTitles[name];
+  if(name==='dashboard') loadDashboard();
+  if(name==='customers') { loadFilters(); loadCustomers(1); }
+  if(name==='segments') loadSegments();
+  if(name==='model') loadModel();
+}
+
+// ── Filters ────────────────────────────────────────────────────────────────
+async function loadFilters(){
+  const r = await fetch(API+'/api/filters_meta');
+  const d = await r.json();
+  const sets = [
+    ['f-region','cf-region', d.regions],
+    ['f-income','cf-income', d.income_segments],
+    ['f-segment','cf-segment', d.segments],
+    ['f-churn','cf-churn', d.churn_options]
+  ];
+  sets.forEach(([id1,id2,opts])=>{
+    [id1,id2].forEach(id=>{
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.innerHTML = '';
+      opts.forEach(o=>{ const op=document.createElement('option'); op.value=o; op.text=o; el.appendChild(op); });
+    });
+  });
+}
+
+function getFilters(){
+  return {
+    region: document.getElementById('f-region')?.value||'All',
+    income_segment: document.getElementById('f-income')?.value||'All',
+    segment: document.getElementById('f-segment')?.value||'All',
+    churn: document.getElementById('f-churn')?.value||'All',
+    min_ltv: document.getElementById('f-ltv')?.value||0
+  };
+}
+function getCFilters(){
+  return {
+    region: document.getElementById('cf-region')?.value||'All',
+    income_segment: document.getElementById('cf-income')?.value||'All',
+    segment: document.getElementById('cf-segment')?.value||'All',
+    churn: document.getElementById('cf-churn')?.value||'All'
+  };
+}
+
+function resetFilters(){
+  ['f-region','f-income','f-segment','f-churn'].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.value='All';
+  });
+  const ltv=document.getElementById('f-ltv');
+  if(ltv){ltv.value=0; document.getElementById('ltv-val').innerText='0';}
+  loadDashboard();
+}
+function resetCFilters(){
+  ['cf-region','cf-income','cf-segment','cf-churn'].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.value='All';
+  });
+  loadCustomers(1);
+}
+
+function buildQuery(params){
+  return '?'+Object.entries(params).map(([k,v])=>k+'='+encodeURIComponent(v)).join('&');
+}
+
+// ── Chart helpers ──────────────────────────────────────────────────────────
+function destroyChart(id){
+  if(charts[id]){ charts[id].destroy(); delete charts[id]; }
+}
+const COLORS = ['#3b82f6','#10b981','#ef4444','#f59e0b','#8b5cf6','#06b6d4'];
+
+// ── Dashboard ───────────────────────────────────────────────────────────────
+async function loadDashboard(){
+  const filters = getFilters();
+  const r = await fetch(API+'/api/dashboard'+buildQuery(filters));
+  const d = await r.json();
+  const s = d.summary;
+
+  document.getElementById('m-total').innerText = s.total_customers.toLocaleString();
+  document.getElementById('m-churn').innerText = s.churned_count.toLocaleString();
+  document.getElementById('m-churn-rate').innerText = s.churn_rate+'% churn rate';
+  document.getElementById('m-ltv').innerText = s.avg_ltv;
+  document.getElementById('m-spent').innerText = '₹'+Math.round(s.avg_spent).toLocaleString();
+  document.getElementById('m-prob').innerText = s.avg_churn_prob+'%';
+  document.getElementById('m-acc').innerText = s.model_accuracy+'%';
+  document.getElementById('last-updated').innerText = 'Updated '+new Date().toLocaleTimeString();
+
+  // Trend chart
+  destroyChart('trend');
+  const tLabels = Object.keys(d.recency_trend);
+  const tData = Object.values(d.recency_trend);
+  charts['trend'] = new Chart(document.getElementById('c-trend'),{
+    type:'line',
+    data:{labels:tLabels,datasets:[{label:'Avg Spend (₹)',data:tData,borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.1)',fill:true,tension:.4,pointRadius:4,pointBackgroundColor:'#3b82f6'}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(255,255,255,.05)'},ticks:{color:'#7b82a0',font:{size:11}}},y:{grid:{color:'rgba(255,255,255,.05)'},ticks:{color:'#7b82a0',font:{size:11},callback:v=>'₹'+Math.round(v).toLocaleString()}}}}
+  });
+
+  // Segments donut
+  destroyChart('segments');
+  const segNames = Object.keys(d.segments.counts);
+  const segVals = Object.values(d.segments.counts);
+  charts['segments'] = new Chart(document.getElementById('c-segments'),{
+    type:'doughnut',
+    data:{labels:segNames,datasets:[{data:segVals,backgroundColor:['#3b82f6','#10b981','#ef4444','#9ca3af'],borderWidth:2,borderColor:'#181c26'}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'right',labels:{color:'#7b82a0',font:{size:11},boxWidth:12}}}}
+  });
+
+  // Region bar
+  destroyChart('region');
+  const regLabels = Object.keys(d.revenue_by_region);
+  const regVals = Object.values(d.revenue_by_region);
+  charts['region'] = new Chart(document.getElementById('c-region'),{
+    type:'bar',
+    data:{labels:regLabels,datasets:[{label:'Revenue (₹)',data:regVals,backgroundColor:COLORS,borderRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#7b82a0',font:{size:11}}},y:{grid:{color:'rgba(255,255,255,.05)'},ticks:{color:'#7b82a0',font:{size:11},callback:v=>'₹'+Math.round(v/1000)+'K'}}}}
+  });
+
+  // Churn by income
+  destroyChart('churn-income');
+  const ciLabels = Object.keys(d.churn_by_income);
+  const ciVals = Object.values(d.churn_by_income);
+  charts['churn-income'] = new Chart(document.getElementById('c-churn-income'),{
+    type:'bar',
+    data:{labels:ciLabels,datasets:[{label:'Churn %',data:ciVals,backgroundColor:['#ef4444','#f59e0b','#10b981'],borderRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#7b82a0'}},y:{grid:{color:'rgba(255,255,255,.05)'},ticks:{color:'#7b82a0',callback:v=>v+'%'}}}}
+  });
+
+  // LTV distribution
+  destroyChart('ltv-dist');
+  const ltvL = Object.keys(d.ltv_distribution);
+  const ltvV = Object.values(d.ltv_distribution);
+  charts['ltv-dist'] = new Chart(document.getElementById('c-ltv-dist'),{
+    type:'bar',
+    data:{labels:ltvL,datasets:[{label:'Customers',data:ltvV,backgroundColor:'rgba(139,92,246,.7)',borderRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#7b82a0'}},y:{grid:{color:'rgba(255,255,255,.05)'},ticks:{color:'#7b82a0'}}}}
+  });
+}
+
+// ── Customers Table ───────────────────────────────────────────────────────
+async function loadCustomers(page){
+  currentPage = page;
+  const filters = getCFilters();
+  filters.page = page;
+  filters.per_page = 20;
+  const r = await fetch(API+'/api/customers'+buildQuery(filters));
+  const d = await r.json();
+
+  document.getElementById('cust-count').innerText = d.total+' customers';
+  const tbody = document.getElementById('cust-tbody');
+  if(!d.customers.length){
+    tbody.innerHTML='<tr><td colspan="13" class="empty">No customers match filters</td></tr>';
+    return;
+  }
+
+  const segClass = {'Champions':'badge-seg0','Growth Potential':'badge-seg1','At-Risk':'badge-seg2','Occasional Buyers':'badge-seg3'};
+  const incClass = {'High':'badge-high','Medium':'badge-medium','Low':'badge-low'};
+
+  tbody.innerHTML = d.customers.map(c=>{
+    const churnPct = Math.round(c.predicted_churn_prob*100);
+    const fillColor = churnPct>60?'#ef4444':churnPct>35?'#f59e0b':'#10b981';
+    return `<tr>
+      <td style="color:var(--muted);font-size:11px;">${c.customer_id}</td>
+      <td style="font-weight:600;">${c.name}</td>
+      <td>${c.age}</td>
+      <td>${c.region}</td>
+      <td><span class="badge ${incClass[c.income_segment]||''}">${c.income_segment}</span></td>
+      <td>${c.total_purchases}</td>
+      <td>₹${Math.round(c.avg_order_value).toLocaleString()}</td>
+      <td>₹${Math.round(c.total_spent).toLocaleString()}</td>
+      <td><span style="color:var(--purple);font-weight:600;">${c.ltv_score}</span></td>
+      <td><span class="badge ${segClass[c.segment_name]||''}">${c.segment_name}</span></td>
+      <td>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <div class="progress-bar"><div class="progress-fill" style="width:${churnPct}%;background:${fillColor};"></div></div>
+          <span style="font-size:12px;color:${fillColor};">${churnPct}%</span>
+        </div>
+      </td>
+      <td><span class="badge ${c.predicted_churned?'badge-churn':'badge-safe'}">${c.predicted_churned?'At Risk':'Safe'}</span></td>
+      <td><button class="btn btn-ghost" style="font-size:11px;padding:4px 10px;" onclick="openCustomer('${c.customer_id}')">View</button></td>
+    </tr>`;
+  }).join('');
+
+  // Pagination
+  const pages = d.pages;
+  let pagHTML = '';
+  for(let i=1;i<=pages;i++){
+    if(i===1||i===pages||Math.abs(i-page)<=2){
+      pagHTML+=`<button class="page-btn ${i===page?'active':''}" onclick="loadCustomers(${i})">${i}</button>`;
+    } else if(Math.abs(i-page)===3){
+      pagHTML+='<span style="color:var(--muted)">…</span>';
+    }
+  }
+  document.getElementById('pagination').innerHTML = pagHTML;
+}
+
+// ── Customer Modal ────────────────────────────────────────────────────────
+async function openCustomer(id){
+  document.getElementById('modal').classList.add('open');
+  document.getElementById('modal-body').innerHTML='<div class="loading"><span class="spinner"></span>Loading...</div>';
+  const r = await fetch(API+'/api/customer/'+id);
+  const d = await r.json();
+  const c = d.customer;
+  document.getElementById('modal-title').innerText = c.name+' — '+c.customer_id;
+
+  const churnPct = Math.round(c.predicted_churn_prob*100);
+  const fillColor = churnPct>60?'#ef4444':churnPct>35?'#f59e0b':'#10b981';
+  const riskLabel = churnPct>60?'High Risk':churnPct>35?'Medium Risk':'Low Risk';
+
+  const recsHTML = d.recommendations.map(rec=>`
+    <div class="rec-card">
+      <div class="rec-left">
+        <div class="rec-product">🛒 ${rec.product}</div>
+        <div class="rec-reason">${rec.category} · ${rec.reason}</div>
+      </div>
+      <div class="confidence-bar">
+        <span class="conf-label">Confidence</span>
+        <div class="progress-bar" style="width:60px;"><div class="progress-fill" style="width:${Math.round(rec.confidence*100)}%;background:#3b82f6;"></div></div>
+        <span style="font-size:12px;color:#3b82f6;font-weight:600;">${Math.round(rec.confidence*100)}%</span>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('modal-body').innerHTML = `
+    <div class="detail-grid">
+      <div class="detail-item"><div class="detail-key">Age</div><div class="detail-val">${c.age}</div></div>
+      <div class="detail-item"><div class="detail-key">Region</div><div class="detail-val">${c.region}</div></div>
+      <div class="detail-item"><div class="detail-key">Income</div><div class="detail-val">₹${Math.round(c.income).toLocaleString()} (${c.income_segment})</div></div>
+      <div class="detail-item"><div class="detail-key">Loyalty</div><div class="detail-val">${c.loyalty_years} yrs</div></div>
+      <div class="detail-item"><div class="detail-key">Total Purchases</div><div class="detail-val blue">${c.total_purchases}</div></div>
+      <div class="detail-item"><div class="detail-key">Total Spent</div><div class="detail-val green">₹${Math.round(c.total_spent).toLocaleString()}</div></div>
+      <div class="detail-item"><div class="detail-key">LTV Score</div><div class="detail-val purple">${c.ltv_score}</div></div>
+      <div class="detail-item"><div class="detail-key">Segment</div><div class="detail-val">${c.segment_name}</div></div>
+      <div class="detail-item"><div class="detail-key">RFM — Recency</div><div class="detail-val">${c.recency_score}</div></div>
+      <div class="detail-item"><div class="detail-key">RFM — Frequency</div><div class="detail-val">${c.frequency_score}</div></div>
+      <div class="detail-item"><div class="detail-key">RFM — Monetary</div><div class="detail-val">${c.monetary_score}</div></div>
+      <div class="detail-item"><div class="detail-key">Support Tickets</div><div class="detail-val ${c.support_tickets>5?'red':''}">${c.support_tickets}</div></div>
+    </div>
+    <div class="card" style="margin-bottom:12px;">
+      <div class="card-title">⚠️ Churn Prediction</div>
+      <div style="font-size:22px;font-weight:700;color:${fillColor};margin-bottom:6px;">${riskLabel}</div>
+      <div class="churn-meter" style="height:10px;"><div class="churn-fill" style="width:${churnPct}%;background:${fillColor};"></div></div>
+      <div style="font-size:13px;color:var(--muted);margin-top:4px;">Churn probability: <span style="color:${fillColor};font-weight:700;">${churnPct}%</span></div>
+    </div>
+    <div class="card-title" style="margin-bottom:8px;">🛒 Personalized Recommendations</div>
+    <div style="margin-bottom:8px;"><span style="font-size:11px;color:var(--muted);">Recent categories: </span>
+      ${c.recent_purchases.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    ${recsHTML}`;
+}
+function closeModal(){ document.getElementById('modal').classList.remove('open'); }
+document.getElementById('modal').addEventListener('click',e=>{ if(e.target===document.getElementById('modal')) closeModal(); });
+
+// ── Segments Page ────────────────────────────────────────────────────────
+async function loadSegments(){
+  const r = await fetch(API+'/api/dashboard');
+  const d = await r.json();
+  const segDefs = [
+    {name:'Champions',desc:'High LTV, frequent buyers, strong engagement',color:'#3b82f6',icon:'👑'},
+    {name:'Growth Potential',desc:'Regular buyers ready for upsell & cross-sell',color:'#10b981',icon:'📈'},
+    {name:'At-Risk',desc:'Declining engagement — needs retention campaign',color:'#ef4444',icon:'⚠️'},
+    {name:'Occasional Buyers',desc:'Infrequent purchasers with low engagement',color:'#9ca3af',icon:'🔵'}
+  ];
+  document.getElementById('seg-cards').innerHTML = segDefs.map(s=>`
+    <div class="card seg-card" style="border-left-color:${s.color};">
+      <div style="font-size:22px;margin-bottom:6px;">${s.icon}</div>
+      <div style="font-size:16px;font-weight:700;color:${s.color};margin-bottom:4px;">${s.name}</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">${s.desc}</div>
+      <div style="display:flex;gap:16px;">
+        <div><div style="font-size:11px;color:var(--muted);">Customers</div><div style="font-size:18px;font-weight:700;">${d.segments.counts[s.name]||0}</div></div>
+        <div><div style="font-size:11px;color:var(--muted);">Avg LTV</div><div style="font-size:18px;font-weight:700;color:${s.color};">${d.segments.avg_ltv[s.name]||0}</div></div>
+        <div><div style="font-size:11px;color:var(--muted);">Avg Spend</div><div style="font-size:18px;font-weight:700;">₹${Math.round(d.segments.avg_spent[s.name]||0).toLocaleString()}</div></div>
+      </div>
+    </div>`).join('');
+
+  const segNames = Object.keys(d.segments.avg_ltv);
+  const segLtvVals = Object.values(d.segments.avg_ltv);
+  const segSpendVals = segNames.map(n=>Math.round(d.segments.avg_spent[n]||0));
+  const segColors = ['#3b82f6','#10b981','#ef4444','#9ca3af'];
+
+  destroyChart('seg-ltv');
+  charts['seg-ltv'] = new Chart(document.getElementById('c-seg-ltv'),{
+    type:'bar',
+    data:{labels:segNames,datasets:[{label:'Avg LTV Score',data:segLtvVals,backgroundColor:segColors,borderRadius:6}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#7b82a0'}},y:{grid:{color:'rgba(255,255,255,.05)'},ticks:{color:'#7b82a0'}}}}
+  });
+
+  destroyChart('seg-spend');
+  charts['seg-spend'] = new Chart(document.getElementById('c-seg-spend'),{
+    type:'bar',
+    data:{labels:segNames,datasets:[{label:'Avg Spend (₹)',data:segSpendVals,backgroundColor:segColors.map(c=>c+'bb'),borderRadius:6}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#7b82a0'}},y:{grid:{color:'rgba(255,255,255,.05)'},ticks:{color:'#7b82a0',callback:v=>'₹'+Math.round(v/1000)+'K'}}}}
+  });
+}
+
+// ── Churn Prediction ───────────────────────────────────────────────────────
+async function runChurnPredict(){
+  const age      = document.getElementById('cp-age').value;
+  const income   = document.getElementById('cp-income').value;
+  const loyalty  = document.getElementById('cp-loyalty').value;
+  const aov      = document.getElementById('cp-aov').value;
+  const tickets  = document.getElementById('cp-tickets').value;
+  const email    = document.getElementById('cp-email').value;
+  const sessions = document.getElementById('cp-sessions').value;
+  const cat      = document.getElementById('cp-cat').value;
+  const recency  = document.getElementById('cp-recency').value;
+  const frequency= document.getElementById('cp-frequency').value;
+  const monetary = document.getElementById('cp-monetary').value;
+
+  const payload = {
+    age, income_segment: income, loyalty_years: loyalty, avg_order_value: aov,
+    support_tickets: tickets, email_open_rate: email, app_sessions_monthly: sessions,
+    preferred_category: cat, recency_score: recency, frequency_score: frequency,
+    monetary_score: monetary, recent_purchases: JSON.stringify([cat])
+  };
+  const r = await fetch(API+'/api/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  const d = await r.json();
+
+  document.getElementById('churnpred-empty').style.display='none';
+  document.getElementById('churnpred-result').classList.remove('hide');
+
+  const pct   = d.churn_probability;
+  const color = pct>60?'#ef4444':pct>35?'#f59e0b':'#10b981';
+  const riskTxt = d.risk_level+' Churn Risk';
+  document.getElementById('cp-risk-label').innerText = riskTxt;
+  document.getElementById('cp-risk-label').style.color = color;
+  document.getElementById('cp-risk-badge').innerText = pct>60?'⚠️ Will Churn':pct>35?'⚡ Might Churn':'✅ Will Stay';
+  document.getElementById('cp-risk-badge').style.cssText = `font-size:12px;padding:5px 14px;border-radius:20px;font-weight:600;background:${pct>60?'rgba(239,68,68,.15)':pct>35?'rgba(245,158,11,.15)':'rgba(16,185,129,.15)'};color:${color};`;
+  document.getElementById('cp-churn-fill').style.cssText = `width:${pct}%;background:${color};`;
+  document.getElementById('cp-churn-pct').innerText = pct+'%';
+  document.getElementById('cp-churn-pct').style.color = color;
+  document.getElementById('cp-ltv').innerText = d.ltv_score;
+  document.getElementById('cp-acc').innerText = d.model_accuracy+'%';
+  document.getElementById('cp-decision').innerText = d.churn_prediction ? '🔴 At Risk' : '🟢 Retained';
+  document.getElementById('cp-decision').style.color = d.churn_prediction ? '#ef4444' : '#10b981';
+
+  // Input data
+  document.getElementById('cp-input-data').innerHTML = [
+    {k:'Age', v: age+' yrs'},
+    {k:'Income Segment', v: income},
+    {k:'Loyalty Years', v: loyalty+' yrs'},
+    {k:'Avg Order Value', v: '₹'+parseInt(aov).toLocaleString()},
+    {k:'Support Tickets', v: tickets},
+    {k:'Email Open Rate', v: Math.round(email*100)+'%'},
+    {k:'App Sessions/Mo', v: sessions},
+    {k:'Preferred Category', v: cat}
+  ].map(i=>`<div class="detail-item"><div class="detail-key">${i.k}</div><div class="detail-val" style="font-size:13px;">${i.v}</div></div>`).join('');
+
+  // RFM scores with bars
+  document.getElementById('cp-rfm-scores').innerHTML = [
+    {k:'Recency', v: recency, c:'var(--accent2)'},
+    {k:'Frequency', v: frequency, c:'var(--accent)'},
+    {k:'Monetary', v: monetary, c:'var(--purple)'}
+  ].map(s=>`<div class="detail-item">
+    <div class="detail-key">${s.k} Score</div>
+    <div class="detail-val" style="color:${s.c};font-size:18px;">${s.v}</div>
+    <div class="progress-bar" style="width:100%;margin-top:5px;"><div class="progress-fill" style="width:${s.v}%;background:${s.c};"></div></div>
+  </div>`).join('');
+}
+
+// ── Customer Prediction ────────────────────────────────────────────────────
+async function runPredict(){
+  const age      = document.getElementById('p-age').value;
+  const incomeVal= document.getElementById('p-income-val').value;
+  const income   = document.getElementById('p-income').value;
+  const purchases= document.getElementById('p-purchases').value;
+  const aov      = document.getElementById('p-aov').value;
+  const spent    = document.getElementById('p-spent').value;
+  const loyalty  = document.getElementById('p-loyalty').value;
+  const sessions = document.getElementById('p-sessions').value;
+  const recency  = document.getElementById('p-recency').value;
+  const frequency= document.getElementById('p-frequency').value;
+  const monetary = document.getElementById('p-monetary').value;
+
+  const payload = {
+    age, income_segment: income, loyalty_years: loyalty, avg_order_value: aov,
+    support_tickets: 1, email_open_rate: 0.4, app_sessions_monthly: sessions,
+    preferred_category: 'Electronics', recency_score: recency,
+    frequency_score: frequency, monetary_score: monetary,
+    recent_purchases: '["Electronics"]'
+  };
+  const r = await fetch(API+'/api/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  const d = await r.json();
+
+  document.getElementById('predict-empty').style.display='none';
+  document.getElementById('predict-result').classList.remove('hide');
+
+  // Derived segment from LTV
+  const ltv = d.ltv_score;
+  const seg  = ltv>=70?'Champions':ltv>=50?'Growth Potential':ltv>=30?'Occasional Buyers':'At-Risk';
+  const segColor = ltv>=70?'#a78bfa':ltv>=50?'#34d399':ltv>=30?'#9ca3af':'#f87171';
+
+  document.getElementById('pred-segment').innerText = seg;
+  document.getElementById('pred-segment').style.color = segColor;
+  document.getElementById('pred-ltv').innerText = ltv;
+  document.getElementById('pred-acc').innerText = d.model_accuracy+'%';
+
+  // Age, income, purchase data
+  document.getElementById('pred-profile-data').innerHTML = [
+    {k:'Age', v: age+' yrs', c:'var(--text)'},
+    {k:'Annual Income', v: '₹'+parseInt(incomeVal).toLocaleString(), c:'var(--accent2)'},
+    {k:'Income Segment', v: income, c:'var(--accent)'},
+    {k:'Total Purchases', v: purchases, c:'var(--purple)'},
+    {k:'Avg Order Value', v: '₹'+parseInt(aov).toLocaleString(), c:'var(--text)'},
+    {k:'Total Spent', v: '₹'+parseInt(spent).toLocaleString(), c:'var(--accent2)'},
+    {k:'Loyalty Years', v: loyalty+' yrs', c:'var(--warn)'},
+    {k:'App Sessions/Mo', v: sessions, c:'var(--text)'},
+    {k:'Est. Annual Spend', v: '₹'+(Math.round(parseInt(aov)*parseInt(purchases)/loyalty)).toLocaleString(), c:'var(--accent2)'}
+  ].map(i=>`<div class="detail-item"><div class="detail-key">${i.k}</div><div class="detail-val" style="font-size:13px;color:${i.c};">${i.v}</div></div>`).join('');
+
+  // RFM + engagement scores
+  document.getElementById('pred-scores-data').innerHTML = [
+    {k:'Recency Score', v: recency, c:'var(--accent2)'},
+    {k:'Frequency Score', v: frequency, c:'var(--accent)'},
+    {k:'Monetary Score', v: monetary, c:'var(--purple)'},
+    {k:'LTV Score', v: ltv, c:'#a78bfa'},
+    {k:'App Sessions', v: sessions+'/mo', c:'var(--text)'},
+    {k:'Churn Risk', v: d.churn_probability+'%', c: d.churn_probability>60?'#ef4444':d.churn_probability>35?'#f59e0b':'#10b981'}
+  ].map(i=>`<div class="detail-item"><div class="detail-key">${i.k}</div><div class="detail-val" style="font-size:14px;color:${i.c};">${i.v}</div></div>`).join('');
+
+  // Derived metrics
+  document.getElementById('pred-derived').innerHTML = [
+    {k:'Spend per Purchase', v:'₹'+parseInt(aov).toLocaleString()},
+    {k:'Spend per Year', v:'₹'+(Math.round(parseInt(spent)/Math.max(parseFloat(loyalty),0.5))).toLocaleString()},
+    {k:'Customer Segment', v: seg},
+    {k:'Retention Likelihood', v: d.churn_probability<35?'High':d.churn_probability<60?'Medium':'Low'}
+  ].map(i=>`<div class="detail-item"><div class="detail-key">${i.k}</div><div class="detail-val" style="font-size:13px;">${i.v}</div></div>`).join('');
+}
+
+// ── Recommendation ─────────────────────────────────────────────────────────
+let selectedRecentPurchases = [];
+function updateRecChecks(){
+  selectedRecentPurchases = Array.from(document.querySelectorAll('#recent-purchase-checkboxes input:checked')).map(c=>c.value);
+  document.getElementById('rec-selected-display').innerText = selectedRecentPurchases.length ? selectedRecentPurchases.join(', ') : 'None';
+}
+
+async function runRecommend(){
+  const income = document.getElementById('r-income').value;
+  const cat = document.getElementById('r-cat').value;
+  const purchases = document.getElementById('r-purchases').value;
+  const aov = document.getElementById('r-aov').value;
+  const spent = document.getElementById('r-spent').value;
+  const loyalty = document.getElementById('r-loyalty').value;
+  const recent = selectedRecentPurchases.length ? selectedRecentPurchases : [cat];
+
+  const payload = {
+    age: 35,
+    income_segment: income,
+    loyalty_years: loyalty,
+    avg_order_value: aov,
+    support_tickets: 1,
+    email_open_rate: 0.4,
+    app_sessions_monthly: 10,
+    preferred_category: cat,
+    recency_score: 60,
+    frequency_score: 40,
+    monetary_score: 50,
+    recent_purchases: JSON.stringify(recent)
+  };
+  const r = await fetch(API+'/api/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  const d = await r.json();
+
+  document.getElementById('recommend-empty').style.display='none';
+  const res = document.getElementById('recommend-result');
+  res.classList.remove('hide');
+
+  // Profile summary
+  document.getElementById('rec-profile-summary').innerHTML = [
+    {k:'Income Segment', v: income},
+    {k:'Preferred Category', v: cat},
+    {k:'Total Purchases', v: purchases},
+    {k:'Avg Order Value', v: '₹'+parseInt(aov).toLocaleString()},
+    {k:'Total Spent', v: '₹'+parseInt(spent).toLocaleString()},
+    {k:'Loyalty Years', v: loyalty+' yrs'}
+  ].map(i=>`<div class="detail-item"><div class="detail-key">${i.k}</div><div class="detail-val" style="font-size:13px;">${i.v}</div></div>`).join('');
+
+  // Recent tags
+  document.getElementById('rec-tags-display').innerHTML = recent.map(t=>`<span class="tag">${t}</span>`).join('');
+
+  // Recommendation cards
+  const catIcons = {Electronics:'💻',Clothing:'👗',Groceries:'🛍️',Beauty:'💄',Sports:'⚽','Home & Kitchen':'🏠',Books:'📚',Toys:'🎮'};
+  document.getElementById('rec-cards').innerHTML = d.recommendations.map((rec,i)=>`
+    <div class="rec-card" style="border-left:3px solid var(--accent);margin-bottom:10px;">
+      <div class="rec-left">
+        <div class="rec-product" style="font-size:14px;">${catIcons[rec.category]||'🛒'} ${rec.product}</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px;">${rec.category}</div>
+      </div>
+      <div class="confidence-bar" style="flex-direction:column;align-items:flex-end;gap:4px;">
+        <span style="font-size:13px;color:var(--accent);font-weight:700;">${Math.round(rec.confidence*100)}%</span>
+        <div class="progress-bar" style="width:70px;"><div class="progress-fill" style="width:${Math.round(rec.confidence*100)}%;background:var(--accent);"></div></div>
+        <span style="font-size:10px;color:var(--muted);">confidence</span>
+      </div>
+    </div>`).join('');
+
+  // Why reasons
+  document.getElementById('rec-reasons').innerHTML = d.recommendations.map(rec=>`
+    <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;padding:8px 10px;background:var(--surface2);border-radius:6px;">
+      <span style="font-size:14px;">💡</span>
+      <div>
+        <span style="font-size:12px;font-weight:600;color:var(--text);">${rec.product}</span>
+        <span style="font-size:11px;color:var(--muted);margin-left:6px;">— ${rec.reason}</span>
+      </div>
+    </div>`).join('');
+}
+
+// ── Model Stats ────────────────────────────────────────────────────────────
+async function loadModel(){
+  const r = await fetch(API+'/api/model_stats');
+  const d = await r.json();
+
+  document.getElementById('model-metrics').innerHTML = [
+    {label:'Model Accuracy', val:d.accuracy+'%', color:'green'},
+    {label:'Precision (No Churn)', val:d.precision_0+'%', color:'blue'},
+    {label:'Recall (No Churn)', val:d.recall_0+'%', color:'blue'},
+    {label:'Precision (Churn)', val:d.precision_1+'%', color:'red'},
+    {label:'Recall (Churn)', val:d.recall_1+'%', color:'red'},
+    {label:'F1-Score (Churn)', val:d.f1_1+'%', color:'yellow'}
+  ].map(m=>`<div class="metric"><div class="metric-label">${m.label}</div><div class="metric-value ${m.color}">${m.val}</div></div>`).join('');
+
+  destroyChart('model-bar');
+  charts['model-bar'] = new Chart(document.getElementById('c-model-bar'),{
+    type:'bar',
+    data:{
+      labels:['Precision','Recall','F1-Score'],
+      datasets:[
+        {label:'No Churn (0)',data:[d.precision_0,d.recall_0,d.f1_0],backgroundColor:'#3b82f6',borderRadius:4},
+        {label:'Churn (1)',data:[d.precision_1,d.recall_1,d.f1_1],backgroundColor:'#ef4444',borderRadius:4}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#7b82a0'}}},scales:{x:{grid:{display:false},ticks:{color:'#7b82a0'}},y:{grid:{color:'rgba(255,255,255,.05)'},max:100,ticks:{color:'#7b82a0',callback:v=>v+'%'}}}}
+  });
+
+  const features = [
+    {name:'Recency Score', val:22},
+    {name:'Frequency Score', val:19},
+    {name:'Monetary Score', val:16},
+    {name:'Support Tickets', val:13},
+    {name:'Email Open Rate', val:11},
+    {name:'App Sessions', val:9},
+    {name:'Loyalty Years', val:6},
+    {name:'Avg Order Value', val:4}
+  ];
+  document.getElementById('feat-importance').innerHTML = features.map(f=>`
+    <div class="feat-bar">
+      <div class="feat-name">${f.name}</div>
+      <div class="feat-fill-wrap"><div class="feat-fill" style="width:${f.val*4}%;"></div></div>
+      <div class="feat-val">${f.val}%</div>
+    </div>`).join('');
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────
+window.onload = async ()=>{
+  await loadFilters();
+  loadDashboard();
+};
+</script>
+</body>
+</html>

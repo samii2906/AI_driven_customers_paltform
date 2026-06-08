@@ -1,0 +1,351 @@
+customer_id,name,age,region,income,income_segment,total_purchases,avg_order_value,total_spent,last_purchase_days,recency_score,frequency_score,monetary_score,preferred_category,recent_purchases,loyalty_years,support_tickets,email_open_rate,app_sessions_monthly,ltv_score,churn_probability,churned
+CUST0001,Girish Desai,26,North,111000.0,High,16,6607.8,106366.56,314,15.2,27.2,53.2,Clothing,"[""Beauty""]",2.3,8,0.24,26,35.4,0.764,1
+CUST0002,Nikhil Mishra,52,West,51900.0,Medium,7,3100.3,22514.09,54,85.4,11.9,11.3,Electronics,"[""Books""]",5.7,0,0.35,20,32.3,0.432,0
+CUST0003,Prakash Rao,26,South,19500.0,Low,17,6586.53,125127.33,12,96.8,28.9,62.6,Groceries,"[""Sports""]",0.6,1,0.11,17,53.8,0.428,0
+CUST0004,Amit Singh,59,South,51900.0,Medium,23,2169.57,52826.37,209,43.6,39.1,26.4,Books,"[""Sports"", ""Groceries""]",6.7,8,0.22,12,39.4,0.637,1
+CUST0005,Sanjay Joshi,24,South,51900.0,Medium,26,208.03,4705.15,14,96.2,44.2,2.4,Clothing,"[""Sports""]",0.1,8,0.52,15,33.6,0.467,0
+CUST0006,Karthik Verma,44,West,19500.0,Low,21,1439.72,28550.35,121,67.3,35.7,14.3,Clothing,"[""Groceries"", ""Sports"", ""Books""]",2.0,5,0.61,8,32.4,0.525,0
+CUST0007,Usha Kumar,58,North,19500.0,Low,22,3854.61,98569.48,20,94.6,37.4,49.3,Groceries,"[""Clothing"", ""Home & Kitchen"", ""Sports""]",6.0,5,0.25,11,57.4,0.439,0
+CUST0008,Sonia Reddy,58,West,111000.0,High,58,7565.57,486184.08,75,79.8,98.6,100.0,Electronics,"[""Home & Kitchen"", ""Groceries""]",2.6,3,0.06,43,88.8,0.301,0
+CUST0009,Neha Pillai,31,South,111000.0,High,7,997.11,7137.9,243,34.4,11.9,3.6,Books,"[""Groceries"", ""Electronics"", ""Sports""]",0.9,3,0.39,37,13.0,0.602,1
+CUST0010,Asha Nair,31,Central,19500.0,Low,14,6862.84,86688.73,223,39.8,23.8,43.3,Toys,"[""Home & Kitchen"", ""Beauty"", ""Groceries""]",2.9,4,0.23,18,36.0,0.602,1
+CUST0011,Ananya Sharma,40,East,19500.0,Low,15,4310.79,59542.2,70,81.1,25.5,29.8,Toys,"[""Sports""]",2.2,2,0.22,6,38.5,0.503,0
+CUST0012,Meera Pillai,38,West,111000.0,High,53,6642.18,384698.53,312,15.8,90.1,100.0,Home & Kitchen,"[""Groceries"", ""Beauty""]",6.8,0,0.96,34,78.7,0.305,0
+CUST0013,Vijay Agarwal,42,West,51900.0,Medium,7,2527.32,20176.32,211,43.0,11.9,10.1,Electronics,"[""Clothing"", ""Toys""]",2.6,0,0.62,47,19.5,0.492,0
+CUST0014,Arun Iyer,35,North,19500.0,Low,9,6751.59,64930.91,101,72.7,15.3,32.5,Sports,"[""Books""]",6.3,6,0.56,17,40.0,0.535,0
+CUST0015,Swati Chauhan,30,North,111000.0,High,51,6228.02,356955.3,186,49.8,86.7,100.0,Beauty,"[""Home & Kitchen"", ""Electronics""]",7.1,0,0.42,15,84.8,0.279,0
+CUST0016,Suresh Mishra,22,West,51900.0,Medium,48,1994.42,105943.19,132,64.4,81.6,53.0,Groceries,"[""Toys"", ""Sports""]",3.5,0,0.43,38,62.9,0.277,0
+CUST0017,Radha Desai,34,South,19500.0,Low,8,1224.41,8422.78,111,70.0,13.6,4.2,Home & Kitchen,"[""Electronics""]",7.3,2,0.54,3,28.9,0.522,0
+CUST0018,Rohan Patel,25,East,51900.0,Medium,50,6970.82,337937.66,132,64.4,85.0,100.0,Books,"[""Home & Kitchen"", ""Clothing""]",3.1,9,0.7,24,82.3,0.369,0
+CUST0019,Arjun Gupta,22,North,111000.0,High,59,7713.25,391913.45,20,94.6,100.0,100.0,Groceries,"[""Clothing"", ""Electronics"", ""Sports""]",7.7,3,0.7,31,98.5,0.197,0
+CUST0020,Girish Pandey,61,South,19500.0,Low,23,444.16,9133.78,24,93.5,39.1,4.6,Groceries,"[""Beauty""]",0.8,3,0.17,39,33.3,0.413,0
+CUST0021,Priya Sinha,53,Central,51900.0,Medium,29,5903.91,196502.27,227,38.7,49.3,98.3,Electronics,"[""Beauty""]",5.5,1,0.5,12,68.7,0.441,0
+CUST0022,Padma Gupta,55,North,19500.0,Low,18,7294.29,129873.54,154,58.4,30.6,64.9,Beauty,"[""Beauty"", ""Toys"", ""Electronics""]",4.0,0,0.41,44,51.8,0.368,0
+CUST0023,Preeti Reddy,49,South,51900.0,Medium,31,6887.41,216529.43,293,20.9,52.7,100.0,Sports,"[""Clothing"", ""Books"", ""Groceries""]",3.2,2,0.87,16,64.0,0.479,0
+CUST0024,Divya Mishra,52,South,111000.0,High,30,7723.26,201896.46,230,37.9,51.0,100.0,Toys,"[""Toys"", ""Home & Kitchen"", ""Sports""]",5.1,3,0.63,48,69.3,0.393,0
+CUST0025,Arjun Pillai,29,East,111000.0,High,52,6128.73,294762.82,310,16.3,88.4,100.0,Clothing,"[""Home & Kitchen"", ""Books"", ""Clothing""]",5.7,2,0.53,36,76.9,0.454,0
+CUST0026,Kavya Mishra,60,East,19500.0,Low,39,3649.93,126987.78,359,3.1,66.3,63.5,Clothing,"[""Beauty""]",0.1,7,0.12,5,46.0,0.749,1
+CUST0027,Pavan Sinha,47,Central,51900.0,Medium,35,2633.23,81331.54,202,45.5,59.5,40.7,Groceries,"[""Home & Kitchen""]",1.4,9,0.61,18,45.0,0.515,0
+CUST0028,Ravi Verma,55,South,19500.0,Low,18,2701.79,51315.96,38,89.7,30.6,25.7,Toys,"[""Home & Kitchen""]",5.7,0,0.12,12,44.5,0.372,0
+CUST0029,Padma Rao,24,South,19500.0,Low,59,5850.5,311612.02,260,29.8,100.0,100.0,Toys,"[""Books"", ""Home & Kitchen""]",5.4,1,0.34,25,82.7,0.442,0
+CUST0030,Priya Reddy,33,East,51900.0,Medium,42,6017.53,266082.3,188,49.2,71.4,100.0,Beauty,"[""Toys"", ""Beauty"", ""Books""]",7.7,6,0.14,13,80.9,0.626,1
+CUST0031,Sneha Iyer,22,North,51900.0,Medium,39,1762.8,56606.84,57,84.6,66.3,28.3,Books,"[""Home & Kitchen"", ""Clothing""]",6.1,3,0.69,30,55.8,0.305,0
+CUST0032,Priya Pandey,26,North,51900.0,Medium,17,6971.36,101531.35,20,94.6,28.9,50.8,Books,"[""Groceries"", ""Sports"", ""Clothing""]",7.6,7,0.21,3,57.4,0.536,0
+CUST0033,Preeti Pillai,51,West,111000.0,High,14,5776.41,73576.59,273,26.3,23.8,36.8,Home & Kitchen,"[""Home & Kitchen"", ""Books""]",5.7,2,0.39,38,34.2,0.548,0
+CUST0034,Rekha Iyer,51,East,19500.0,Low,31,4589.45,147795.81,119,67.9,52.7,73.9,Electronics,"[""Beauty"", ""Electronics""]",2.5,5,0.9,7,62.1,0.445,0
+CUST0035,Anjali Sinha,38,West,19500.0,Low,24,3877.95,99617.07,71,80.8,40.8,49.8,Beauty,"[""Home & Kitchen"", ""Electronics""]",0.9,8,0.2,24,49.4,0.542,0
+CUST0036,Tarun Chauhan,44,East,111000.0,High,35,4437.22,151744.22,4,98.9,59.5,75.9,Beauty,"[""Electronics"", ""Home & Kitchen"", ""Beauty""]",6.3,0,0.51,12,75.9,0.174,0
+CUST0037,Suresh Rao,36,Central,51900.0,Medium,44,1442.12,62077.38,221,40.3,74.8,31.0,Electronics,"[""Clothing"", ""Toys""]",5.2,0,0.42,31,49.4,0.421,0
+CUST0038,Pooja Rao,58,South,111000.0,High,45,1788.87,87728.52,14,96.2,76.5,43.9,Toys,"[""Electronics"", ""Sports""]",0.5,7,0.02,37,60.4,0.451,0
+CUST0039,Amit Chauhan,42,Central,111000.0,High,34,911.08,24977.41,3,99.2,57.8,12.5,Books,"[""Sports"", ""Clothing"", ""Toys""]",2.9,2,0.79,37,45.8,0.242,0
+CUST0040,Ganesh Pandey,35,East,111000.0,High,3,1398.53,3928.9,216,41.7,5.1,2.0,Books,"[""Electronics""]",7.7,4,0.07,27,20.3,0.626,1
+CUST0041,Naveen Mehta,23,South,19500.0,Low,37,3738.81,155971.43,229,38.2,62.9,78.0,Toys,"[""Electronics"", ""Clothing""]",4.1,0,0.47,29,62.8,0.371,0
+CUST0042,Harish Mishra,32,North,111000.0,High,43,4336.76,194180.05,336,9.3,73.1,97.1,Books,"[""Books""]",3.5,4,0.56,2,67.0,0.493,0
+CUST0043,Ganesh Sharma,60,North,19500.0,Low,40,339.32,12689.09,186,49.8,68.0,6.3,Groceries,"[""Toys""]",3.7,5,0.63,27,37.5,0.514,0
+CUST0044,Vijay Singh,59,West,19500.0,Low,26,6415.02,193845.6,55,85.2,44.2,96.9,Beauty,"[""Home & Kitchen"", ""Books""]",1.8,7,0.69,2,71.3,0.449,0
+CUST0045,Rahul Sharma,55,East,19500.0,Low,55,2494.51,152159.37,254,31.4,93.5,76.1,Clothing,"[""Books"", ""Electronics"", ""Toys""]",3.0,2,0.25,44,68.5,0.506,0
+CUST0046,Radha Rao,59,East,51900.0,Medium,23,7312.32,152367.09,24,93.5,39.1,76.2,Electronics,"[""Sports"", ""Electronics"", ""Home & Kitchen""]",3.0,2,0.01,33,64.7,0.492,0
+CUST0047,Neha Joshi,55,North,19500.0,Low,44,7746.59,360658.77,162,56.3,74.8,100.0,Books,"[""Beauty""]",0.5,9,0.72,15,74.3,0.443,0
+CUST0048,Ravi Rao,39,Central,19500.0,Low,39,1646.58,66676.14,158,57.3,66.3,33.3,Home & Kitchen,"[""Groceries""]",6.2,8,0.54,21,52.4,0.466,0
+CUST0049,Pavan Kumar,51,South,51900.0,Medium,15,3804.36,54809.9,82,77.9,25.5,27.4,Books,"[""Groceries""]",3.4,3,0.84,31,38.4,0.399,0
+CUST0050,Mohan Patel,36,Central,19500.0,Low,56,209.61,11113.48,159,57.1,95.2,5.6,Books,"[""Electronics""]",6.6,3,0.82,37,50.5,0.168,0
+CUST0051,Sunita Singh,48,Central,111000.0,High,49,4866.95,223557.44,188,49.2,83.3,100.0,Sports,"[""Toys"", ""Clothing"", ""Home & Kitchen""]",6.8,6,0.84,7,83.3,0.404,0
+CUST0052,Harish Singh,55,North,111000.0,High,4,4936.99,20673.4,60,83.8,6.8,10.3,Groceries,"[""Home & Kitchen""]",1.8,1,0.49,7,25.2,0.438,0
+CUST0053,Rahul Rao,59,North,19500.0,Low,29,2130.81,60370.01,305,17.6,49.3,30.2,Electronics,"[""Toys""]",5.3,7,0.33,5,37.0,0.8,1
+CUST0054,Meera Reddy,54,North,51900.0,Medium,22,4555.62,113527.85,319,13.9,37.4,56.8,Sports,"[""Home & Kitchen"", ""Toys""]",3.8,5,0.79,13,41.5,0.632,1
+CUST0055,Mohan Chauhan,45,West,111000.0,High,25,1959.21,52303.12,211,43.0,42.5,26.2,Sports,"[""Sports""]",7.1,2,0.45,31,40.7,0.463,0
+CUST0056,Rajesh Patel,36,Central,51900.0,Medium,13,1454.44,15655.07,152,59.0,22.1,7.8,Home & Kitchen,"[""Toys"", ""Groceries""]",1.8,8,0.18,34,23.8,0.603,1
+CUST0057,Pavan Pillai,51,East,51900.0,Medium,18,5281.85,100403.8,109,70.6,30.6,50.2,Beauty,"[""Books""]",5.5,4,0.85,9,50.3,0.492,0
+CUST0058,Usha Kumar,63,South,111000.0,High,33,2742.22,82209.41,76,79.5,56.1,41.1,Home & Kitchen,"[""Home & Kitchen"", ""Clothing""]",4.9,7,0.88,2,55.3,0.401,0
+CUST0059,Aarav Kumar,38,West,51900.0,Medium,16,4804.06,79718.56,30,91.9,27.2,39.9,Beauty,"[""Groceries"", ""Beauty"", ""Home & Kitchen""]",2.4,6,0.47,11,45.5,0.482,0
+CUST0060,Sunil Mishra,26,East,111000.0,High,45,3579.32,172674.9,314,15.2,76.5,86.3,Beauty,"[""Home & Kitchen"", ""Clothing"", ""Books""]",1.2,7,0.08,48,62.0,0.567,1
+CUST0061,Pooja Kumar,50,Central,51900.0,Medium,42,7877.94,295248.89,117,68.4,71.4,100.0,Electronics,"[""Groceries"", ""Beauty"", ""Home & Kitchen""]",5.2,6,0.39,30,81.6,0.343,0
+CUST0062,Aarav Patel,25,North,111000.0,High,44,1366.73,59098.38,356,3.9,74.8,29.5,Books,"[""Home & Kitchen"", ""Clothing""]",5.9,2,0.8,28,42.4,0.42,0
+CUST0063,Preeti Sinha,31,Central,19500.0,Low,2,3823.87,6700.41,192,48.2,3.4,3.4,Electronics,"[""Books""]",2.6,1,0.9,4,15.3,0.501,0
+CUST0064,Girish Gupta,38,South,111000.0,High,55,5507.56,248674.35,19,94.9,93.5,100.0,Groceries,"[""Groceries""]",5.2,6,0.2,24,93.5,0.311,0
+CUST0065,Suresh Mishra,31,West,111000.0,High,35,3285.25,109394.46,173,53.3,59.5,54.7,Beauty,"[""Books"", ""Toys"", ""Electronics""]",3.2,2,0.07,40,54.4,0.432,0
+CUST0066,Preeti Iyer,38,West,111000.0,High,42,7802.66,309745.81,228,38.4,71.4,100.0,Sports,"[""Books"", ""Home & Kitchen""]",5.7,2,0.88,30,76.2,0.352,0
+CUST0067,Aditya Bhat,41,South,111000.0,High,34,5830.72,237534.99,350,5.5,57.8,100.0,Books,"[""Beauty""]",1.7,1,0.39,20,60.6,0.54,0
+CUST0068,Shreya Singh,45,East,51900.0,Medium,30,5324.47,156306.36,183,50.6,51.0,78.2,Clothing,"[""Electronics"", ""Beauty""]",7.1,3,0.54,19,65.6,0.531,0
+CUST0069,Ramesh Desai,26,East,19500.0,Low,59,6105.06,336219.34,113,69.5,100.0,100.0,Groceries,"[""Sports""]",2.4,7,0.97,38,86.9,0.309,0
+CUST0070,Shreya Verma,55,West,111000.0,High,55,7630.66,433196.0,183,50.6,93.5,100.0,Electronics,"[""Clothing"", ""Sports""]",3.0,0,0.07,21,81.9,0.357,0
+CUST0071,Asha Patel,27,West,51900.0,Medium,13,7280.99,79083.13,146,60.6,22.1,39.5,Home & Kitchen,"[""Sports"", ""Books"", ""Clothing""]",0.6,0,0.65,3,35.3,0.474,0
+CUST0072,Rajesh Singh,23,North,19500.0,Low,13,5849.43,90085.09,319,13.9,22.1,45.0,Groceries,"[""Toys""]",1.0,4,0.07,12,28.7,0.734,1
+CUST0073,Ganesh Mishra,34,East,19500.0,Low,18,6043.46,114654.78,116,68.7,30.6,57.3,Groceries,"[""Books"", ""Toys"", ""Beauty""]",4.2,4,0.38,44,51.1,0.312,0
+CUST0074,Prakash Verma,64,South,19500.0,Low,32,1338.19,47187.15,113,69.5,54.4,23.6,Books,"[""Toys"", ""Books""]",2.2,0,0.8,41,42.4,0.256,0
+CUST0075,Aditya Singh,64,East,19500.0,Low,32,1001.78,27831.57,251,32.2,54.4,13.9,Groceries,"[""Beauty"", ""Home & Kitchen""]",6.7,5,0.43,49,36.7,0.523,0
+CUST0076,Sonia Reddy,32,North,111000.0,High,35,4653.06,156960.23,251,32.2,59.5,78.5,Groceries,"[""Sports"", ""Books""]",0.2,0,1.0,48,55.9,0.231,0
+CUST0077,Sunita Mehta,44,West,111000.0,High,59,343.27,19626.62,303,18.2,100.0,9.8,Clothing,"[""Electronics"", ""Toys"", ""Books""]",3.1,4,0.56,19,41.4,0.482,0
+CUST0078,Sneha Pillai,37,West,51900.0,Medium,39,3962.38,174424.68,313,15.5,66.3,87.2,Toys,"[""Clothing"", ""Toys""]",2.8,8,0.32,12,61.4,0.665,1
+CUST0079,Radha Desai,52,North,51900.0,Medium,46,1840.73,67780.75,118,68.1,78.2,33.9,Home & Kitchen,"[""Sports"", ""Toys""]",0.3,4,0.22,16,51.0,0.433,0
+CUST0080,Asha Joshi,32,South,51900.0,Medium,52,2898.93,138736.25,301,18.7,88.4,69.4,Home & Kitchen,"[""Clothing"", ""Sports"", ""Books""]",1.1,5,0.35,35,59.4,0.491,0
+CUST0081,Swati Singh,37,West,19500.0,Low,29,6251.28,216183.9,161,56.5,49.3,100.0,Home & Kitchen,"[""Books"", ""Beauty"", ""Home & Kitchen""]",3.4,7,0.37,32,70.3,0.592,1
+CUST0082,Mohan Sharma,29,Central,19500.0,Low,49,7541.65,365828.67,198,46.5,83.3,100.0,Beauty,"[""Toys"", ""Clothing"", ""Home & Kitchen""]",4.0,0,0.07,0,79.3,0.455,0
+CUST0083,Arun Desai,25,West,111000.0,High,29,764.85,21138.39,260,29.8,49.3,10.6,Sports,"[""Clothing"", ""Toys"", ""Books""]",3.3,1,0.37,14,29.1,0.577,1
+CUST0084,Aditya Gupta,61,Central,19500.0,Low,53,4367.09,196258.66,148,60.0,90.1,98.1,Toys,"[""Electronics""]",4.3,8,0.46,12,83.6,0.518,0
+CUST0085,Rohan Singh,25,North,19500.0,Low,44,7083.76,370801.52,240,35.2,74.8,100.0,Home & Kitchen,"[""Electronics"", ""Sports"", ""Toys""]",4.8,2,0.72,16,75.5,0.354,0
+CUST0086,Sneha Rao,46,North,19500.0,Low,57,843.57,38851.97,47,87.3,96.9,19.4,Groceries,"[""Toys"", ""Beauty"", ""Books""]",0.2,5,0.66,23,54.5,0.214,0
+CUST0087,Arun Gupta,24,West,51900.0,Medium,16,6631.21,116165.23,198,46.5,27.2,58.1,Groceries,"[""Groceries"", ""Home & Kitchen""]",3.8,4,0.71,7,45.4,0.577,1
+CUST0088,Sunil Sharma,53,East,51900.0,Medium,56,2990.85,185482.45,47,87.3,95.2,92.7,Home & Kitchen,"[""Beauty"", ""Toys""]",7.7,1,0.01,49,92.7,0.203,0
+CUST0089,Sunita Pillai,24,Central,111000.0,High,44,2712.34,107105.85,78,78.9,74.8,53.6,Books,"[""Toys"", ""Home & Kitchen"", ""Beauty""]",4.2,6,0.22,26,64.9,0.4,0
+CUST0090,Neha Mishra,48,South,19500.0,Low,47,7824.24,392974.79,124,66.5,79.9,100.0,Home & Kitchen,"[""Clothing""]",5.5,3,0.66,44,84.1,0.339,0
+CUST0091,Shreya Gupta,50,West,19500.0,Low,57,1766.7,84304.78,75,79.8,96.9,42.2,Groceries,"[""Beauty""]",2.6,0,0.48,22,65.2,0.188,0
+CUST0092,Ramesh Agarwal,53,South,111000.0,High,10,5606.91,50620.24,359,3.1,17.0,25.3,Beauty,"[""Sports""]",6.2,3,0.01,45,23.6,0.673,1
+CUST0093,Meera Singh,40,West,19500.0,Low,30,6607.24,221044.05,137,63.0,51.0,100.0,Electronics,"[""Clothing"", ""Beauty""]",6.2,5,0.8,7,75.6,0.409,0
+CUST0094,Ananya Kumar,42,East,19500.0,Low,25,521.23,14931.6,90,75.7,42.5,7.5,Electronics,"[""Groceries""]",4.2,6,0.77,7,36.1,0.567,1
+CUST0095,Ramesh Patel,26,East,51900.0,Medium,39,5429.01,220919.38,325,12.2,66.3,100.0,Toys,"[""Toys"", ""Sports"", ""Electronics""]",7.8,6,0.55,25,72.1,0.58,1
+CUST0096,Ramesh Agarwal,39,East,111000.0,High,20,7622.09,152858.79,61,83.5,34.0,76.4,Toys,"[""Toys"", ""Beauty"", ""Sports""]",1.1,6,0.07,46,58.8,0.414,0
+CUST0097,Ramesh Reddy,49,East,111000.0,High,5,1168.92,5048.11,138,62.7,8.5,2.5,Home & Kitchen,"[""Sports""]",0.2,2,0.77,12,16.3,0.404,0
+CUST0098,Ananya Patel,63,North,111000.0,High,1,7190.53,5933.94,50,86.5,1.7,3.0,Clothing,"[""Toys"", ""Groceries""]",6.2,5,0.58,38,26.8,0.443,0
+CUST0099,Shreya Sharma,43,North,111000.0,High,30,4839.26,122974.25,259,30.1,51.0,61.5,Home & Kitchen,"[""Beauty"", ""Groceries""]",6.5,7,0.78,36,54.0,0.527,0
+CUST0100,Aarav Bhat,42,Central,51900.0,Medium,49,5009.52,218696.62,107,71.1,83.3,100.0,Books,"[""Beauty""]",1.0,3,0.75,48,80.5,0.279,0
+CUST0101,Ananya Pillai,27,South,51900.0,Medium,3,4980.96,13996.54,113,69.5,5.1,7.0,Home & Kitchen,"[""Electronics"", ""Toys""]",2.2,7,0.8,27,21.0,0.589,1
+CUST0102,Preeti Nair,22,West,19500.0,Low,45,2530.92,108466.05,350,5.5,76.5,54.2,Toys,"[""Groceries"", ""Beauty"", ""Sports""]",0.2,1,0.52,24,46.0,0.49,0
+CUST0103,Shreya Verma,26,West,19500.0,Low,14,7494.57,98474.17,254,31.4,23.8,49.2,Electronics,"[""Beauty"", ""Toys""]",2.4,9,0.14,15,36.1,0.756,1
+CUST0104,Karthik Agarwal,62,North,19500.0,Low,56,7589.33,380641.63,118,68.1,95.2,100.0,Groceries,"[""Electronics"", ""Toys"", ""Sports""]",6.2,8,0.67,1,89.9,0.433,0
+CUST0105,Madhuri Patel,33,West,19500.0,Low,30,5077.38,152913.88,198,46.5,51.0,76.5,Home & Kitchen,"[""Beauty""]",4.2,8,0.62,17,60.4,0.481,0
+CUST0106,Rekha Nair,47,North,51900.0,Medium,50,6310.7,356590.66,337,9.0,85.0,100.0,Groceries,"[""Electronics"", ""Toys"", ""Books""]",2.8,7,0.74,16,70.8,0.661,1
+CUST0107,Sonia Joshi,55,Central,111000.0,High,4,4975.61,18148.67,51,86.2,6.8,9.1,Groceries,"[""Beauty"", ""Books""]",3.0,9,0.17,29,26.7,0.654,1
+CUST0108,Geeta Chauhan,35,South,51900.0,Medium,18,3978.31,84281.24,245,33.8,30.6,42.1,Clothing,"[""Groceries"", ""Sports""]",0.1,9,0.19,38,32.9,0.744,1
+CUST0109,Mohan Gupta,47,Central,19500.0,Low,37,5354.4,227697.91,35,90.6,62.9,100.0,Groceries,"[""Clothing""]",2.5,0,0.89,12,80.1,0.16,0
+CUST0110,Sneha Chauhan,48,East,51900.0,Medium,25,4513.41,97569.28,302,18.5,42.5,48.8,Electronics,"[""Home & Kitchen""]",5.2,1,0.75,31,42.5,0.552,1
+CUST0111,Nikhil Kumar,30,East,111000.0,High,48,4860.31,260009.57,69,81.4,81.6,100.0,Beauty,"[""Clothing""]",7.8,5,0.91,49,90.5,0.195,0
+CUST0112,Divya Verma,47,East,111000.0,High,1,6313.89,6502.26,349,5.8,1.7,3.3,Beauty,"[""Electronics""]",6.8,9,0.76,28,11.5,0.745,1
+CUST0113,Sanjay Kumar,43,Central,51900.0,Medium,53,3951.05,214982.15,320,13.6,90.1,100.0,Sports,"[""Books""]",0.3,4,0.6,45,70.1,0.436,0
+CUST0114,Sanjay Desai,51,West,51900.0,Medium,46,517.88,22784.23,49,86.8,78.2,11.4,Books,"[""Groceries"", ""Home & Kitchen"", ""Electronics""]",7.2,8,0.65,29,54.4,0.346,0
+CUST0115,Shreya Singh,64,South,51900.0,Medium,15,1479.2,22198.23,74,80.0,25.5,11.1,Home & Kitchen,"[""Toys"", ""Electronics""]",6.3,4,0.89,17,36.0,0.356,0
+CUST0116,Harish Sharma,38,East,19500.0,Low,9,3621.14,31249.87,192,48.2,15.3,15.6,Books,"[""Groceries""]",6.3,1,0.58,12,28.3,0.484,0
+CUST0117,Usha Singh,47,East,51900.0,Medium,15,5853.65,89200.24,261,29.5,25.5,44.6,Electronics,"[""Toys"", ""Electronics"", ""Beauty""]",3.7,9,0.63,42,36.0,0.604,1
+CUST0118,Nisha Rao,57,East,51900.0,Medium,49,4827.57,248657.61,356,3.9,83.3,100.0,Groceries,"[""Electronics""]",3.2,3,0.16,20,69.8,0.532,0
+CUST0119,Aarav Joshi,22,South,51900.0,Medium,57,5272.29,321473.28,70,81.1,96.9,100.0,Beauty,"[""Toys"", ""Books"", ""Home & Kitchen""]",2.5,8,0.47,29,88.4,0.327,0
+CUST0120,Swati Pandey,29,East,111000.0,High,24,3938.38,95749.18,90,75.7,40.8,47.9,Books,"[""Toys""]",0.6,0,0.72,20,47.3,0.255,0
+CUST0121,Rajesh Iyer,56,South,111000.0,High,4,5002.79,21783.52,260,29.8,6.8,10.9,Electronics,"[""Books"", ""Electronics"", ""Beauty""]",1.9,0,0.27,47,14.7,0.528,0
+CUST0122,Pavan Singh,36,East,19500.0,Low,12,2766.34,28432.81,126,66.0,20.4,14.2,Beauty,"[""Books"", ""Beauty"", ""Groceries""]",2.0,6,0.2,16,27.5,0.663,1
+CUST0123,Lakshmi Chauhan,43,Central,19500.0,Low,59,3867.42,201890.1,231,37.6,100.0,100.0,Groceries,"[""Home & Kitchen"", ""Beauty"", ""Electronics""]",3.9,2,0.31,39,82.4,0.397,0
+CUST0124,Ramesh Reddy,35,Central,111000.0,High,58,6005.38,392719.74,295,20.3,98.6,100.0,Books,"[""Electronics""]",6.0,9,0.24,18,81.1,0.551,1
+CUST0125,Aarav Chauhan,47,South,111000.0,High,37,7000.3,240624.21,129,65.2,62.9,100.0,Beauty,"[""Groceries"", ""Clothing""]",3.8,1,0.21,14,76.7,0.457,0
+CUST0126,Meera Patel,49,Central,111000.0,High,37,3582.51,107256.15,280,24.4,62.9,53.6,Home & Kitchen,"[""Sports"", ""Home & Kitchen"", ""Electronics""]",0.6,8,0.42,8,45.9,0.556,1
+CUST0127,Sunil Gupta,44,South,51900.0,Medium,43,540.56,20025.16,313,15.5,73.1,10.0,Toys,"[""Books"", ""Sports"", ""Clothing""]",7.7,2,0.91,9,38.7,0.581,1
+CUST0128,Harish Kumar,35,Central,51900.0,Medium,6,1461.05,7797.15,100,73.0,10.2,3.9,Home & Kitchen,"[""Sports"", ""Home & Kitchen""]",7.5,1,0.51,43,28.6,0.479,0
+CUST0129,Sanjay Chauhan,45,Central,111000.0,High,39,362.72,16733.81,326,12.0,66.3,8.4,Sports,"[""Toys""]",6.3,7,0.19,30,33.5,0.626,1
+CUST0130,Lakshmi Kumar,23,South,51900.0,Medium,56,5295.45,305209.23,297,19.8,95.2,100.0,Sports,"[""Beauty""]",7.9,9,0.08,22,82.4,0.649,1
+CUST0131,Divya Sharma,47,West,51900.0,Medium,46,2792.05,150665.29,182,50.9,78.2,75.3,Beauty,"[""Groceries""]",4.4,5,0.7,29,69.3,0.321,0
+CUST0132,Neha Desai,35,Central,19500.0,Low,24,4431.33,109549.43,174,53.0,40.8,54.8,Toys,"[""Groceries"", ""Clothing""]",7.7,5,0.38,32,54.4,0.523,0
+CUST0133,Karthik Agarwal,28,East,111000.0,High,11,4047.56,44155.48,316,14.7,18.7,22.1,Electronics,"[""Home & Kitchen"", ""Beauty""]",0.7,9,0.82,8,18.3,0.745,1
+CUST0134,Kavya Verma,24,West,111000.0,High,13,835.91,10057.15,364,1.7,22.1,5.0,Home & Kitchen,"[""Home & Kitchen""]",3.0,6,0.66,46,12.7,0.631,1
+CUST0135,Madhuri Rao,44,South,51900.0,Medium,34,3345.44,118584.62,188,49.2,57.8,59.3,Electronics,"[""Beauty""]",1.9,6,0.8,0,53.3,0.487,0
+CUST0136,Divya Kumar,64,West,111000.0,High,25,1920.38,41080.73,57,84.6,42.5,20.5,Toys,"[""Books"", ""Electronics"", ""Home & Kitchen""]",1.6,5,0.27,43,39.9,0.386,0
+CUST0137,Geeta Kumar,39,North,19500.0,Low,7,3463.52,28106.92,31,91.6,11.9,14.1,Electronics,"[""Clothing""]",1.2,3,0.69,34,29.0,0.328,0
+CUST0138,Vijay Pandey,59,North,19500.0,Low,52,1787.91,105218.71,84,77.3,88.4,52.6,Toys,"[""Home & Kitchen"", ""Groceries""]",5.0,8,0.26,10,69.3,0.406,0
+CUST0139,Smita Pandey,56,Central,19500.0,Low,4,6755.53,25049.85,152,59.0,6.8,12.5,Beauty,"[""Home & Kitchen""]",6.3,5,0.94,33,26.7,0.429,0
+CUST0140,Ananya Kumar,36,Central,111000.0,High,59,1558.71,108620.3,36,90.3,100.0,54.3,Electronics,"[""Clothing""]",4.7,3,0.64,15,75.7,0.256,0
+CUST0141,Lakshmi Gupta,46,East,111000.0,High,8,7694.09,69559.52,213,42.5,13.6,34.8,Home & Kitchen,"[""Sports"", ""Home & Kitchen"", ""Toys""]",1.3,2,0.32,8,28.1,0.57,1
+CUST0142,Anjali Sharma,58,West,111000.0,High,20,3444.08,73463.79,364,1.7,34.0,36.7,Groceries,"[""Groceries"", ""Electronics"", ""Books""]",6.5,3,0.27,31,33.3,0.611,1
+CUST0143,Priya Sharma,49,North,111000.0,High,29,6800.71,167382.05,106,71.4,49.3,83.7,Sports,"[""Sports""]",5.1,2,0.19,14,68.9,0.489,0
+CUST0144,Pooja Chauhan,31,Central,111000.0,High,54,5104.37,273236.19,342,7.7,91.8,100.0,Groceries,"[""Home & Kitchen"", ""Sports""]",3.2,1,0.69,11,73.1,0.465,0
+CUST0145,Divya Rao,60,West,19500.0,Low,53,5935.73,315362.25,220,40.6,90.1,100.0,Electronics,"[""Books"", ""Home & Kitchen"", ""Groceries""]",5.4,4,0.22,32,81.9,0.479,0
+CUST0146,Arjun Kumar,38,Central,51900.0,Medium,51,6188.25,281837.95,163,56.0,86.7,100.0,Groceries,"[""Books""]",2.2,1,0.6,44,80.0,0.305,0
+CUST0147,Ravi Sharma,60,Central,19500.0,Low,45,4137.79,154916.28,220,40.6,76.5,77.5,Home & Kitchen,"[""Groceries"", ""Books""]",2.8,5,0.26,13,65.6,0.621,1
+CUST0148,Geeta Pillai,43,North,111000.0,High,46,4437.74,226731.75,270,27.1,78.2,100.0,Home & Kitchen,"[""Home & Kitchen"", ""Groceries""]",7.3,2,0.66,7,78.0,0.446,0
+CUST0149,Sonia Sinha,47,North,19500.0,Low,10,4209.17,35728.03,120,67.6,17.0,17.9,Electronics,"[""Electronics"", ""Books"", ""Sports""]",2.4,5,0.81,7,28.8,0.448,0
+CUST0150,Asha Nair,46,Central,111000.0,High,43,4786.86,213598.31,336,9.3,73.1,100.0,Beauty,"[""Electronics"", ""Groceries"", ""Toys""]",3.8,9,0.78,26,68.5,0.618,1
+CUST0151,Madhuri Mehta,38,South,111000.0,High,34,429.28,17143.6,182,50.9,57.8,8.6,Groceries,"[""Electronics"", ""Clothing"", ""Books""]",7.1,8,0.76,11,39.8,0.496,0
+CUST0152,Kavya Reddy,34,Central,19500.0,Low,57,3285.02,215415.84,106,71.4,96.9,100.0,Beauty,"[""Books"", ""Clothing"", ""Electronics""]",5.7,0,0.19,0,90.5,0.268,0
+CUST0153,Amit Sharma,41,Central,111000.0,High,26,4928.27,116743.95,217,41.4,44.2,58.4,Beauty,"[""Beauty"", ""Books"", ""Electronics""]",0.6,5,0.09,42,45.6,0.575,1
+CUST0154,Swati Mishra,46,East,51900.0,Medium,41,4862.24,227376.61,205,44.6,69.7,100.0,Toys,"[""Home & Kitchen""]",1.3,8,0.7,39,71.5,0.515,0
+CUST0155,Mohan Patel,25,East,111000.0,High,49,6385.06,250335.96,70,81.1,83.3,100.0,Clothing,"[""Home & Kitchen""]",0.2,3,0.37,41,81.5,0.23,0
+CUST0156,Geeta Bhat,31,East,51900.0,Medium,58,5309.07,248519.46,44,88.1,98.6,100.0,Electronics,"[""Electronics""]",5.1,1,0.43,10,93.6,0.289,0
+CUST0157,Priya Kumar,24,South,51900.0,Medium,3,7938.64,24792.88,329,11.2,5.1,12.4,Sports,"[""Beauty"", ""Groceries"", ""Toys""]",3.6,3,0.03,38,13.2,0.688,1
+CUST0158,Ramesh Agarwal,62,South,111000.0,High,56,2414.07,127876.86,301,18.7,95.2,63.9,Home & Kitchen,"[""Sports"", ""Clothing"", ""Toys""]",1.2,0,0.26,42,59.4,0.374,0
+CUST0159,Radha Sinha,39,Central,19500.0,Low,6,3001.38,17190.42,228,38.4,10.2,8.6,Home & Kitchen,"[""Groceries"", ""Beauty""]",7.7,2,0.03,30,23.8,0.657,1
+CUST0160,Sneha Kumar,57,East,51900.0,Medium,5,3194.01,16381.7,184,50.3,8.5,8.2,Electronics,"[""Toys"", ""Books""]",4.3,9,0.88,16,21.3,0.627,1
+CUST0161,Harish Patel,43,South,19500.0,Low,5,3833.34,16803.69,107,71.1,8.5,8.4,Toys,"[""Clothing"", ""Beauty""]",2.0,8,0.24,32,22.6,0.538,0
+CUST0162,Neha Agarwal,55,North,51900.0,Medium,54,6720.78,321077.98,84,77.3,91.8,100.0,Books,"[""Home & Kitchen""]",4.1,9,0.56,31,88.1,0.42,0
+CUST0163,Smita Kumar,29,Central,111000.0,High,47,2039.18,95251.14,338,8.7,79.9,47.6,Books,"[""Groceries""]",5.5,4,0.04,28,51.6,0.565,1
+CUST0164,Mohan Desai,61,West,111000.0,High,23,6252.8,158440.53,250,32.5,39.1,79.2,Books,"[""Toys"", ""Groceries""]",0.7,5,0.67,20,50.8,0.604,1
+CUST0165,Amit Sharma,40,Central,51900.0,Medium,49,3361.42,172582.55,363,2.0,83.3,86.3,Toys,"[""Electronics"", ""Books""]",2.3,2,0.32,20,62.8,0.479,0
+CUST0166,Rohan Pandey,63,West,111000.0,High,9,4894.47,40479.61,21,94.3,15.3,20.2,Sports,"[""Books"", ""Beauty""]",6.5,4,0.9,39,39.7,0.291,0
+CUST0167,Vijay Iyer,62,East,51900.0,Medium,35,5133.82,174676.79,196,47.1,59.5,87.3,Home & Kitchen,"[""Books""]",3.7,7,0.89,22,66.8,0.518,0
+CUST0168,Tarun Kumar,58,West,111000.0,High,20,3108.22,53975.23,178,51.9,34.0,27.0,Electronics,"[""Toys""]",4.4,5,0.33,5,36.9,0.619,1
+CUST0169,Usha Sinha,27,East,19500.0,Low,58,4198.4,202074.92,7,98.1,98.6,100.0,Toys,"[""Books"", ""Groceries""]",3.5,3,0.9,21,93.6,0.12,0
+CUST0170,Neha Pandey,47,North,111000.0,High,49,3421.64,186619.13,70,81.1,83.3,93.3,Home & Kitchen,"[""Toys""]",0.4,1,1.0,49,79.0,0.139,0
+CUST0171,Shreya Mishra,55,West,19500.0,Low,59,739.24,39522.09,127,65.7,100.0,19.8,Beauty,"[""Groceries""]",1.4,8,0.83,37,52.8,0.268,0
+CUST0172,Sonia Reddy,27,Central,111000.0,High,42,3609.89,132073.15,160,56.8,71.4,66.0,Groceries,"[""Home & Kitchen""]",3.6,0,0.84,36,63.7,0.261,0
+CUST0173,Arun Iyer,58,East,19500.0,Low,35,959.67,36162.91,248,33.0,59.5,18.1,Groceries,"[""Groceries"", ""Beauty""]",1.8,0,0.25,44,33.9,0.436,0
+CUST0174,Ananya Agarwal,54,Central,111000.0,High,50,3359.16,175889.09,203,45.2,85.0,87.9,Toys,"[""Books"", ""Home & Kitchen"", ""Toys""]",0.5,3,0.58,7,70.3,0.395,0
+CUST0175,Usha Sharma,43,South,19500.0,Low,18,4824.76,91472.46,148,60.0,30.6,45.7,Home & Kitchen,"[""Home & Kitchen""]",6.8,6,0.07,40,48.0,0.533,0
+CUST0176,Rahul Joshi,42,East,51900.0,Medium,17,4719.44,71530.11,143,61.4,28.9,35.8,Clothing,"[""Sports""]",7.9,0,0.09,48,45.1,0.439,0
+CUST0177,Geeta Singh,27,West,51900.0,Medium,24,5368.45,115064.12,199,46.3,40.8,57.5,Sports,"[""Groceries"", ""Home & Kitchen""]",6.4,8,1.0,34,52.5,0.501,0
+CUST0178,Nikhil Iyer,27,East,19500.0,Low,3,943.04,2513.17,154,58.4,5.1,1.3,Books,"[""Electronics"", ""Beauty""]",6.8,3,0.33,10,22.2,0.581,1
+CUST0179,Preeti Kumar,25,Central,111000.0,High,32,5286.56,147093.42,142,61.7,54.4,73.5,Sports,"[""Home & Kitchen"", ""Electronics"", ""Sports""]",2.0,2,0.75,23,60.6,0.311,0
+CUST0180,Padma Mehta,51,North,19500.0,Low,35,2634.75,97960.35,313,15.5,59.5,49.0,Sports,"[""Electronics""]",7.7,0,0.81,48,50.2,0.392,0
+CUST0181,Arjun Verma,32,East,111000.0,High,38,3312.56,143400.2,165,55.4,64.6,71.7,Toys,"[""Clothing"", ""Sports"", ""Groceries""]",1.7,9,0.86,20,61.3,0.462,0
+CUST0182,Ganesh Desai,51,West,51900.0,Medium,13,6892.29,97639.29,314,15.2,22.1,48.8,Beauty,"[""Home & Kitchen""]",7.6,3,1.0,1,38.7,0.559,1
+CUST0183,Aarav Rao,52,South,111000.0,High,56,270.44,16914.1,21,94.3,95.2,8.5,Sports,"[""Home & Kitchen"", ""Electronics""]",8.0,8,0.24,39,60.8,0.327,0
+CUST0184,Smita Chauhan,45,North,51900.0,Medium,47,4789.62,216539.73,82,77.9,79.9,100.0,Groceries,"[""Home & Kitchen"", ""Clothing"", ""Groceries""]",5.7,9,0.04,18,86.7,0.586,1
+CUST0185,Pooja Pillai,30,South,111000.0,High,25,4869.97,129252.7,69,81.4,42.5,64.6,Beauty,"[""Clothing"", ""Groceries""]",7.9,5,0.41,38,64.7,0.395,0
+CUST0186,Rajesh Mishra,24,East,111000.0,High,9,3293.95,27917.05,131,64.6,15.3,14.0,Electronics,"[""Home & Kitchen""]",4.6,5,0.13,27,28.9,0.671,1
+CUST0187,Swati Reddy,52,Central,111000.0,High,4,2048.82,8278.89,87,76.5,6.8,4.1,Sports,"[""Groceries"", ""Toys"", ""Home & Kitchen""]",2.2,0,0.02,16,21.7,0.625,1
+CUST0188,Ananya Bhat,61,Central,19500.0,Low,14,2030.46,28217.62,218,41.1,23.8,14.1,Sports,"[""Books""]",3.6,9,0.36,5,25.5,0.688,1
+CUST0189,Vijay Agarwal,58,West,19500.0,Low,37,7092.94,228519.84,305,17.6,62.9,100.0,Electronics,"[""Beauty"", ""Toys"", ""Groceries""]",4.8,1,0.78,18,68.4,0.461,0
+CUST0190,Sunita Nair,57,Central,51900.0,Medium,34,3647.79,118422.84,345,6.8,57.8,59.2,Sports,"[""Electronics""]",0.7,5,0.57,37,43.3,0.685,1
+CUST0191,Suresh Joshi,45,North,51900.0,Medium,11,2780.94,36265.73,341,7.9,18.7,18.1,Electronics,"[""Home & Kitchen""]",5.0,1,0.31,27,20.7,0.647,1
+CUST0192,Sunil Sharma,52,Central,19500.0,Low,41,3700.47,136461.18,161,56.5,69.7,68.2,Beauty,"[""Beauty"", ""Clothing"", ""Groceries""]",7.9,2,0.65,1,69.4,0.4,0
+CUST0193,Kavya Pillai,27,West,51900.0,Medium,56,5421.25,259120.59,178,51.9,95.2,100.0,Groceries,"[""Electronics"", ""Sports"", ""Toys""]",1.6,3,0.23,37,80.9,0.276,0
+CUST0194,Radha Patel,23,East,19500.0,Low,3,1336.9,3880.08,117,68.4,5.1,1.9,Electronics,"[""Home & Kitchen""]",6.4,4,0.01,36,24.0,0.563,1
+CUST0195,Girish Verma,41,East,111000.0,High,59,3705.58,244019.75,196,47.1,100.0,100.0,Clothing,"[""Beauty""]",7.3,8,0.76,3,88.5,0.479,0
+CUST0196,Sneha Mehta,49,Central,51900.0,Medium,28,4785.5,138396.95,327,11.7,47.6,69.2,Toys,"[""Toys"", ""Groceries"", ""Sports""]",7.6,3,0.62,21,53.8,0.696,1
+CUST0197,Shreya Desai,32,South,51900.0,Medium,29,7598.95,236322.09,86,76.8,49.3,100.0,Toys,"[""Groceries""]",7.7,8,0.76,25,79.8,0.434,0
+CUST0198,Asha Mishra,25,East,19500.0,Low,9,2169.72,17103.69,289,22.0,15.3,8.6,Electronics,"[""Home & Kitchen"", ""Sports""]",4.2,9,0.04,48,17.7,0.694,1
+CUST0199,Pavan Rao,36,Central,51900.0,Medium,3,3002.16,9435.0,81,78.1,5.1,4.7,Toys,"[""Beauty"", ""Groceries"", ""Sports""]",7.8,2,0.84,42,28.8,0.314,0
+CUST0200,Lakshmi Mehta,27,West,51900.0,Medium,25,3159.0,73399.38,152,59.0,42.5,36.7,Sports,"[""Clothing"", ""Books"", ""Sports""]",6.1,7,0.62,35,46.9,0.494,0
+CUST0201,Padma Iyer,51,Central,111000.0,High,34,4923.2,189772.26,61,83.5,57.8,94.9,Books,"[""Beauty"", ""Toys""]",1.4,0,0.56,12,73.8,0.356,0
+CUST0202,Asha Bhat,59,East,51900.0,Medium,12,2982.51,37641.17,61,83.5,20.4,18.8,Books,"[""Home & Kitchen""]",3.9,8,0.62,31,35.2,0.536,0
+CUST0203,Ravi Bhat,23,West,111000.0,High,42,4361.39,161113.17,354,4.4,71.4,80.6,Toys,"[""Sports"", ""Books""]",5.8,8,0.86,16,61.8,0.634,1
+CUST0204,Swati Patel,36,Central,19500.0,Low,9,6297.96,46810.34,28,92.4,15.3,23.4,Beauty,"[""Books"", ""Sports""]",2.1,9,0.59,40,35.1,0.562,1
+CUST0205,Preeti Gupta,32,North,51900.0,Medium,15,5702.01,69882.69,43,88.4,25.5,34.9,Home & Kitchen,"[""Home & Kitchen"", ""Electronics"", ""Groceries""]",5.2,1,0.58,35,45.8,0.299,0
+CUST0206,Meera Sharma,29,West,111000.0,High,40,3681.68,139692.28,169,54.4,68.0,69.8,Beauty,"[""Toys""]",5.4,3,0.99,45,66.0,0.291,0
+CUST0207,Aarav Mishra,47,North,19500.0,Low,25,6940.89,157270.23,86,76.8,42.5,78.6,Home & Kitchen,"[""Books"", ""Electronics""]",1.4,7,0.76,18,61.3,0.428,0
+CUST0208,Rekha Chauhan,26,South,51900.0,Medium,5,4553.49,24097.89,177,52.2,8.5,12.0,Books,"[""Toys"", ""Home & Kitchen"", ""Clothing""]",4.6,6,0.44,34,23.5,0.597,1
+CUST0209,Vijay Rao,27,West,19500.0,Low,11,4411.27,48511.04,17,95.4,18.7,24.3,Books,"[""Home & Kitchen""]",6.2,0,0.71,45,42.2,0.22,0
+CUST0210,Ganesh Sharma,47,North,51900.0,Medium,59,466.66,24956.07,98,73.5,100.0,12.5,Electronics,"[""Books"", ""Electronics""]",4.0,4,0.39,39,54.7,0.257,0
+CUST0211,Lakshmi Singh,25,East,19500.0,Low,34,7896.21,230803.33,198,46.5,57.8,100.0,Groceries,"[""Toys""]",0.2,6,0.23,27,66.9,0.548,0
+CUST0212,Vikram Kumar,40,East,19500.0,Low,24,1159.17,23671.55,98,73.5,40.8,11.8,Clothing,"[""Books""]",0.2,3,0.6,0,31.9,0.43,0
+CUST0213,Meera Chauhan,41,South,111000.0,High,15,2002.82,34424.39,65,82.4,25.5,17.2,Beauty,"[""Sports""]",2.9,0,0.93,41,34.6,0.26,0
+CUST0214,Sunil Sinha,54,West,19500.0,Low,38,603.24,20571.01,330,10.9,64.6,10.3,Sports,"[""Beauty""]",7.4,8,0.93,17,34.9,0.616,1
+CUST0215,Swati Patel,41,West,51900.0,Medium,8,5192.02,44056.75,341,7.9,13.6,22.0,Home & Kitchen,"[""Toys"", ""Books""]",1.9,4,0.34,47,16.8,0.743,1
+CUST0216,Naveen Agarwal,33,West,51900.0,Medium,59,1952.67,129524.87,5,98.6,100.0,64.8,Toys,"[""Electronics"", ""Groceries"", ""Clothing""]",5.1,1,0.53,39,82.0,0.182,0
+CUST0217,Asha Sinha,22,South,111000.0,High,5,1604.08,8386.39,2,99.5,8.5,4.2,Sports,"[""Toys""]",1.9,7,0.21,32,26.5,0.563,1
+CUST0218,Vikram Pillai,47,West,51900.0,Medium,48,890.73,48904.33,22,94.1,81.6,24.5,Groceries,"[""Beauty""]",2.6,1,1.0,11,56.4,0.099,0
+CUST0219,Lakshmi Chauhan,35,East,51900.0,Medium,26,1005.81,25025.45,112,69.8,44.2,12.5,Home & Kitchen,"[""Beauty"", ""Books"", ""Home & Kitchen""]",6.8,2,0.98,7,40.7,0.343,0
+CUST0220,Amit Singh,59,North,51900.0,Medium,18,4760.43,101324.8,57,84.6,30.6,50.7,Beauty,"[""Toys""]",5.9,9,0.65,23,53.8,0.493,0
+CUST0221,Anjali Sharma,58,East,19500.0,Low,6,5568.02,28505.75,66,82.2,10.2,14.3,Electronics,"[""Books"", ""Home & Kitchen"", ""Beauty""]",0.9,0,0.8,15,26.3,0.346,0
+CUST0222,Asha Patel,32,East,19500.0,Low,37,3299.56,102655.29,330,10.9,62.9,51.3,Sports,"[""Sports"", ""Beauty"", ""Electronics""]",3.5,1,0.72,49,45.9,0.445,0
+CUST0223,Rajesh Iyer,57,North,51900.0,Medium,48,3943.2,201288.09,98,73.5,81.6,100.0,Groceries,"[""Toys"", ""Sports"", ""Electronics""]",0.3,6,0.59,3,79.6,0.322,0
+CUST0224,Vikram Verma,34,East,111000.0,High,13,5550.55,84938.52,144,61.1,22.1,42.5,Beauty,"[""Toys"", ""Beauty"", ""Electronics""]",3.9,9,0.05,37,40.7,0.746,1
+CUST0225,Rekha Desai,64,South,19500.0,Low,28,335.56,10556.55,125,66.2,47.6,5.3,Books,"[""Toys""]",5.3,1,0.45,43,36.3,0.41,0
+CUST0226,Tarun Iyer,24,North,111000.0,High,5,2720.42,11297.45,167,54.9,8.5,5.6,Books,"[""Beauty"", ""Groceries"", ""Electronics""]",1.0,5,0.67,26,17.0,0.587,1
+CUST0227,Sanjay Sharma,54,East,51900.0,Medium,13,7790.16,92334.52,86,76.8,22.1,46.2,Beauty,"[""Clothing"", ""Beauty""]",2.4,2,0.68,8,43.5,0.434,0
+CUST0228,Vikram Mehta,27,Central,51900.0,Medium,17,4724.88,94148.75,76,79.5,28.9,47.1,Beauty,"[""Clothing"", ""Groceries"", ""Home & Kitchen""]",3.2,3,0.37,46,47.4,0.464,0
+CUST0229,Priya Chauhan,31,East,19500.0,Low,50,2182.95,98366.28,344,7.1,85.0,49.2,Beauty,"[""Clothing"", ""Books""]",7.4,7,0.94,15,55.9,0.574,1
+CUST0230,Neha Chauhan,26,South,51900.0,Medium,40,4269.49,189986.87,294,20.6,68.0,95.0,Home & Kitchen,"[""Beauty""]",7.9,2,0.17,11,72.4,0.619,1
+CUST0231,Ananya Agarwal,44,West,19500.0,Low,45,2872.7,146083.63,59,84.1,76.5,73.0,Beauty,"[""Sports"", ""Electronics""]",0.5,9,0.5,30,69.6,0.399,0
+CUST0232,Swati Desai,31,East,51900.0,Medium,32,4351.51,138995.01,138,62.7,54.4,69.5,Sports,"[""Electronics""]",6.1,5,0.69,23,64.3,0.517,0
+CUST0233,Neha Pillai,23,West,51900.0,Medium,29,1180.78,32685.94,99,73.3,49.3,16.3,Groceries,"[""Beauty"", ""Sports""]",3.0,0,0.7,13,39.7,0.385,0
+CUST0234,Padma Kumar,34,Central,19500.0,Low,51,1235.17,61736.93,192,48.2,86.7,30.9,Home & Kitchen,"[""Electronics"", ""Books"", ""Beauty""]",3.2,6,0.65,44,52.0,0.401,0
+CUST0235,Mohan Sharma,61,East,19500.0,Low,58,1319.63,68179.45,243,34.4,98.6,34.1,Beauty,"[""Books"", ""Sports"", ""Groceries""]",6.1,7,0.28,24,57.7,0.566,1
+CUST0236,Prakash Patel,23,North,19500.0,Low,3,7530.59,26110.58,319,13.9,5.1,13.1,Clothing,"[""Electronics"", ""Home & Kitchen""]",7.4,7,0.16,33,18.8,0.778,1
+CUST0237,Meera Kumar,41,West,51900.0,Medium,56,5916.61,324785.68,49,86.8,95.2,100.0,Toys,"[""Beauty"", ""Sports"", ""Clothing""]",7.6,2,0.64,2,95.4,0.184,0
+CUST0238,Aarav Sharma,22,Central,51900.0,Medium,40,1466.58,67637.72,32,91.4,68.0,33.8,Clothing,"[""Electronics"", ""Sports""]",4.7,9,0.6,23,58.1,0.416,0
+CUST0239,Usha Iyer,58,North,111000.0,High,34,1669.12,47799.31,277,25.2,57.8,23.9,Groceries,"[""Toys"", ""Sports""]",2.9,0,0.18,41,35.6,0.471,0
+CUST0240,Prakash Pillai,30,North,19500.0,Low,40,5900.47,282115.66,20,94.6,68.0,100.0,Books,"[""Clothing""]",6.3,8,0.71,8,87.2,0.374,0
+CUST0241,Nikhil Mehta,38,North,51900.0,Medium,27,1418.08,37419.37,154,58.4,45.9,18.7,Electronics,"[""Electronics"", ""Beauty""]",2.1,5,0.46,25,35.6,0.554,1
+CUST0242,Meera Sinha,30,North,51900.0,Medium,13,2029.58,21612.43,68,81.6,22.1,10.8,Electronics,"[""Toys"", ""Groceries""]",4.6,8,0.67,19,33.0,0.53,0
+CUST0243,Ananya Bhat,32,East,19500.0,Low,45,7714.11,282987.44,214,42.2,76.5,100.0,Toys,"[""Sports"", ""Electronics"", ""Beauty""]",2.9,6,0.84,39,75.0,0.414,0
+CUST0244,Padma Kumar,36,East,111000.0,High,33,2191.39,79437.75,143,61.4,56.1,39.7,Books,"[""Groceries""]",5.3,0,0.17,9,51.6,0.417,0
+CUST0245,Rajesh Agarwal,45,East,19500.0,Low,6,5360.73,34210.49,232,37.4,10.2,17.1,Home & Kitchen,"[""Books""]",2.0,0,0.02,18,19.9,0.67,1
+CUST0246,Preeti Rao,59,Central,111000.0,High,24,7833.32,210719.86,213,42.5,40.8,100.0,Home & Kitchen,"[""Clothing"", ""Electronics"", ""Books""]",1.6,5,0.78,2,62.7,0.587,1
+CUST0247,Nikhil Iyer,56,Central,51900.0,Medium,19,3119.51,49914.63,79,78.7,32.3,25.0,Home & Kitchen,"[""Toys"", ""Clothing"", ""Books""]",7.4,4,0.61,23,44.7,0.47,0
+CUST0248,Preeti Reddy,51,Central,111000.0,High,16,336.62,4385.37,214,42.2,27.2,2.2,Electronics,"[""Toys""]",0.9,8,0.7,4,18.6,0.63,1
+CUST0249,Harish Singh,52,South,51900.0,Medium,40,2104.35,84462.86,116,68.7,68.0,42.2,Clothing,"[""Toys""]",4.1,1,0.84,2,56.1,0.381,0
+CUST0250,Priya Pandey,26,Central,19500.0,Low,28,6680.84,178652.79,92,75.2,47.6,89.3,Electronics,"[""Sports"", ""Electronics""]",1.8,7,0.8,26,67.3,0.517,0
+CUST0251,Ganesh Joshi,35,East,19500.0,Low,33,6943.95,225662.4,270,27.1,56.1,100.0,Sports,"[""Home & Kitchen"", ""Sports"", ""Electronics""]",0.4,4,0.96,15,62.8,0.53,0
+CUST0252,Nikhil Verma,32,East,19500.0,Low,59,6194.45,437337.38,168,54.6,100.0,100.0,Beauty,"[""Groceries"", ""Clothing"", ""Beauty""]",0.4,1,0.54,48,81.4,0.191,0
+CUST0253,Vijay Verma,30,South,111000.0,High,59,1082.26,75876.92,58,84.3,100.0,37.9,Home & Kitchen,"[""Sports""]",1.5,9,0.49,14,63.9,0.336,0
+CUST0254,Deepika Patel,55,South,51900.0,Medium,48,6404.98,361833.05,284,23.3,81.6,100.0,Clothing,"[""Beauty""]",6.9,5,0.4,34,77.8,0.483,0
+CUST0255,Rahul Kumar,33,Central,19500.0,Low,41,7365.69,336280.72,26,93.0,69.7,100.0,Groceries,"[""Electronics""]",2.3,9,0.15,11,82.4,0.454,0
+CUST0256,Ramesh Kumar,56,West,19500.0,Low,13,4884.75,59814.62,66,82.2,22.1,29.9,Toys,"[""Beauty"", ""Toys"", ""Electronics""]",7.6,7,0.57,40,44.5,0.47,0
+CUST0257,Geeta Verma,56,South,51900.0,Medium,43,7538.83,312775.89,248,33.0,73.1,100.0,Groceries,"[""Books""]",4.7,3,0.28,43,74.4,0.485,0
+CUST0258,Nisha Agarwal,22,North,19500.0,Low,45,6649.34,305158.75,254,31.4,76.5,100.0,Beauty,"[""Electronics""]",3.5,1,0.92,25,73.6,0.364,0
+CUST0259,Girish Patel,61,East,51900.0,Medium,25,5402.38,152916.23,44,88.1,42.5,76.5,Clothing,"[""Clothing"", ""Books""]",4.7,4,0.58,46,66.8,0.341,0
+CUST0260,Meera Agarwal,43,North,51900.0,Medium,53,4702.04,206216.01,97,73.8,90.1,100.0,Electronics,"[""Sports""]",4.2,1,0.59,33,87.0,0.208,0
+CUST0261,Aditya Kumar,50,East,51900.0,Medium,42,2918.87,118880.29,42,88.7,71.4,59.4,Electronics,"[""Beauty"", ""Electronics""]",6.1,1,0.35,22,70.5,0.276,0
+CUST0262,Harish Agarwal,29,East,51900.0,Medium,36,1442.44,43258.33,227,38.7,61.2,21.6,Sports,"[""Sports"", ""Electronics""]",2.3,5,0.05,30,37.6,0.606,1
+CUST0263,Ramesh Desai,32,South,51900.0,Medium,27,4918.64,133581.91,262,29.3,45.9,66.8,Sports,"[""Books"", ""Electronics""]",2.9,9,0.03,49,50.0,0.577,1
+CUST0264,Geeta Mehta,62,South,111000.0,High,38,2681.27,118145.58,167,54.9,64.6,59.1,Electronics,"[""Clothing""]",7.2,8,0.42,19,63.0,0.534,0
+CUST0265,Sanjay Agarwal,58,North,19500.0,Low,7,6958.22,54211.2,279,24.7,11.9,27.1,Groceries,"[""Electronics""]",7.6,3,0.08,11,28.8,0.74,1
+CUST0266,Anjali Pillai,35,East,111000.0,High,5,7948.03,35413.92,89,76.0,8.5,17.7,Toys,"[""Beauty"", ""Home & Kitchen"", ""Electronics""]",7.2,5,0.61,22,33.8,0.556,1
+CUST0267,Harish Bhat,51,North,19500.0,Low,43,6068.94,310651.09,178,51.9,73.1,100.0,Home & Kitchen,"[""Toys"", ""Home & Kitchen""]",3.4,6,0.88,3,76.6,0.395,0
+CUST0268,Meera Gupta,56,West,111000.0,High,45,905.76,43487.63,197,46.8,76.5,21.7,Groceries,"[""Sports""]",6.3,5,0.88,22,48.9,0.342,0
+CUST0269,Arjun Sinha,42,North,51900.0,Medium,58,2451.75,114354.33,307,17.1,98.6,57.2,Toys,"[""Books"", ""Beauty"", ""Toys""]",3.9,7,0.66,47,60.8,0.482,0
+CUST0270,Tarun Desai,58,Central,19500.0,Low,57,1051.06,54049.11,267,27.9,96.9,27.0,Sports,"[""Sports"", ""Electronics"", ""Beauty""]",4.0,3,0.21,47,50.4,0.316,0
+CUST0271,Sanjay Mishra,26,North,19500.0,Low,51,5273.99,243228.78,268,27.6,86.7,100.0,Beauty,"[""Clothing"", ""Books""]",1.7,0,0.86,0,73.7,0.441,0
+CUST0272,Lakshmi Patel,40,Central,111000.0,High,31,6168.49,158275.76,74,80.0,52.7,79.1,Toys,"[""Electronics""]",4.8,6,0.89,24,69.4,0.379,0
+CUST0273,Pavan Pillai,35,Central,111000.0,High,23,7420.26,202056.68,8,97.8,39.1,100.0,Electronics,"[""Groceries"", ""Toys""]",1.6,2,0.2,1,73.3,0.495,0
+CUST0274,Vijay Desai,47,Central,19500.0,Low,42,3617.74,150623.48,297,19.8,71.4,75.3,Sports,"[""Groceries"", ""Electronics""]",2.7,5,0.74,29,58.9,0.442,0
+CUST0275,Amit Verma,25,West,111000.0,High,10,7230.73,83755.41,164,55.7,17.0,41.9,Sports,"[""Sports""]",6.9,1,0.29,2,41.6,0.543,0
+CUST0276,Rajesh Chauhan,46,North,111000.0,High,32,7047.55,209483.9,85,77.0,54.4,100.0,Home & Kitchen,"[""Electronics"", ""Beauty""]",1.7,8,0.8,20,73.8,0.313,0
+CUST0277,Girish Mehta,63,North,111000.0,High,43,2674.13,97750.19,72,80.6,73.1,48.9,Electronics,"[""Books"", ""Clothing""]",0.7,0,1.0,24,58.5,0.139,0
+CUST0278,Sunita Singh,46,West,51900.0,Medium,53,6977.42,366007.02,55,85.2,90.1,100.0,Home & Kitchen,"[""Books""]",0.6,5,0.03,19,84.8,0.368,0
+CUST0279,Pooja Patel,39,East,51900.0,Medium,30,3130.24,79406.3,47,87.3,51.0,39.7,Electronics,"[""Sports"", ""Electronics"", ""Beauty""]",7.5,5,0.9,48,58.0,0.182,0
+CUST0280,Pavan Joshi,61,South,111000.0,High,39,2515.58,97558.83,238,35.7,66.3,48.8,Home & Kitchen,"[""Books"", ""Clothing"", ""Groceries""]",4.1,4,0.62,21,51.7,0.455,0
+CUST0281,Karthik Pandey,29,North,111000.0,High,31,5262.78,190574.13,104,71.9,52.7,95.3,Toys,"[""Groceries"", ""Toys"", ""Books""]",3.3,4,0.97,20,72.4,0.249,0
+CUST0282,Naveen Pillai,60,South,51900.0,Medium,18,2761.37,50117.57,210,43.3,30.6,25.1,Groceries,"[""Beauty""]",6.5,0,0.47,32,36.0,0.449,0
+CUST0283,Rahul Iyer,61,West,51900.0,Medium,36,5115.63,192744.64,42,88.7,61.2,96.4,Beauty,"[""Groceries""]",6.7,9,0.85,37,83.0,0.417,0
+CUST0284,Radha Agarwal,35,East,19500.0,Low,2,4956.69,8551.83,316,14.7,3.4,4.3,Beauty,"[""Clothing"", ""Groceries""]",2.7,4,0.06,14,9.1,0.792,1
+CUST0285,Madhuri Singh,53,East,19500.0,Low,14,4594.82,52587.35,268,27.6,23.8,26.3,Electronics,"[""Home & Kitchen""]",5.6,1,0.34,45,30.2,0.623,1
+CUST0286,Smita Mehta,59,East,51900.0,Medium,13,3167.27,34764.59,263,29.0,22.1,17.4,Clothing,"[""Electronics"", ""Books"", ""Groceries""]",6.2,6,0.07,14,27.1,0.782,1
+CUST0287,Usha Iyer,54,West,111000.0,High,29,4478.3,134989.25,336,9.3,49.3,67.5,Books,"[""Sports""]",5.3,2,0.98,45,50.3,0.523,0
+CUST0288,Rahul Pandey,44,Central,111000.0,High,12,4852.59,48797.92,259,30.1,20.4,24.4,Sports,"[""Groceries"", ""Sports"", ""Toys""]",1.3,3,0.82,24,23.5,0.513,0
+CUST0289,Arun Reddy,36,Central,111000.0,High,39,4456.36,165177.16,283,23.6,66.3,82.6,Sports,"[""Toys""]",7.0,2,0.85,20,66.4,0.4,0
+CUST0290,Vikram Patel,54,South,111000.0,High,2,3666.47,7479.87,114,69.2,3.4,3.7,Electronics,"[""Groceries"", ""Sports""]",4.4,2,0.94,23,21.8,0.455,0
+CUST0291,Madhuri Bhat,46,Central,19500.0,Low,32,314.4,9612.7,363,2.0,54.4,4.8,Toys,"[""Clothing"", ""Books"", ""Groceries""]",2.3,3,0.09,4,21.5,0.622,1
+CUST0292,Kavya Chauhan,38,Central,51900.0,Medium,13,4779.08,53770.17,40,89.2,22.1,26.9,Home & Kitchen,"[""Books""]",3.5,4,0.39,5,39.6,0.513,0
+CUST0293,Ganesh Sharma,54,East,111000.0,High,46,1513.87,63336.93,220,40.6,78.2,31.7,Clothing,"[""Books"", ""Toys"", ""Electronics""]",0.4,0,0.07,48,44.8,0.363,0
+CUST0294,Sonia Desai,23,East,19500.0,Low,27,5212.09,164836.67,129,65.2,45.9,82.4,Groceries,"[""Toys"", ""Electronics"", ""Books""]",1.1,3,0.21,42,61.1,0.502,0
+CUST0295,Ravi Singh,35,South,111000.0,High,49,6122.89,321141.0,8,97.8,83.3,100.0,Home & Kitchen,"[""Sports"", ""Beauty"", ""Toys""]",6.1,7,0.23,47,92.2,0.344,0
+CUST0296,Vijay Mehta,61,North,51900.0,Medium,41,4103.47,167976.3,101,72.7,69.7,84.0,Home & Kitchen,"[""Books"", ""Clothing""]",0.1,9,0.47,43,69.2,0.487,0
+CUST0297,Priya Verma,61,South,19500.0,Low,17,4430.44,60637.05,176,52.5,28.9,30.3,Electronics,"[""Beauty"", ""Home & Kitchen"", ""Groceries""]",3.4,6,0.27,46,35.5,0.522,0
+CUST0298,Sneha Bhat,60,South,51900.0,Medium,40,7621.53,364908.54,107,71.1,68.0,100.0,Electronics,"[""Home & Kitchen"", ""Toys"", ""Sports""]",4.2,8,0.1,22,79.9,0.571,1
+CUST0299,Radha Singh,27,West,51900.0,Medium,31,6807.91,225519.11,101,72.7,52.7,100.0,Toys,"[""Groceries"", ""Sports"", ""Books""]",0.5,4,0.17,3,71.0,0.572,1
+CUST0300,Arun Iyer,27,West,19500.0,Low,34,7331.04,231002.14,260,29.8,57.8,100.0,Sports,"[""Clothing""]",7.8,9,0.15,26,73.1,0.673,1
+CUST0301,Preeti Bhat,24,South,19500.0,Low,24,6547.38,180975.99,246,33.6,40.8,90.5,Electronics,"[""Beauty"", ""Books""]",1.9,3,0.97,17,57.5,0.444,0
+CUST0302,Girish Kumar,28,South,19500.0,Low,45,1049.56,42666.47,275,25.8,76.5,21.3,Electronics,"[""Groceries""]",2.5,7,0.76,20,39.8,0.485,0
+CUST0303,Ganesh Mehta,29,South,19500.0,Low,35,1362.14,48514.29,32,91.4,59.5,24.3,Electronics,"[""Sports"", ""Beauty""]",2.5,8,0.97,27,49.0,0.4,0
+CUST0304,Padma Desai,63,Central,19500.0,Low,48,4307.67,218022.2,137,63.0,81.6,100.0,Toys,"[""Books"", ""Beauty"", ""Groceries""]",1.9,6,0.44,34,79.5,0.529,0
+CUST0305,Swati Rao,36,West,19500.0,Low,6,2119.34,11297.25,12,96.8,10.2,5.6,Sports,"[""Toys""]",0.1,6,0.28,21,24.8,0.471,0
+CUST0306,Harish Singh,50,South,19500.0,Low,19,3918.22,88692.12,302,18.5,32.3,44.3,Groceries,"[""Toys"", ""Sports"", ""Beauty""]",5.9,4,0.8,39,38.5,0.497,0
+CUST0307,Aarav Kumar,54,East,111000.0,High,30,3276.05,108038.57,16,95.7,51.0,54.0,Groceries,"[""Beauty"", ""Sports""]",7.7,3,0.33,22,65.7,0.398,0
+CUST0308,Aditya Agarwal,51,East,51900.0,Medium,7,4485.43,32124.1,129,65.2,11.9,16.1,Books,"[""Sports""]",1.9,9,0.3,2,25.4,0.67,1
+CUST0309,Vijay Sharma,60,Central,19500.0,Low,10,6025.63,52557.82,63,83.0,17.0,26.3,Books,"[""Home & Kitchen"", ""Books""]",5.3,0,0.23,39,38.8,0.448,0
+CUST0310,Madhuri Nair,48,Central,111000.0,High,41,5780.83,194717.28,109,70.6,69.7,97.4,Electronics,"[""Groceries""]",6.0,9,0.13,49,81.5,0.501,0
+CUST0311,Radha Mehta,57,North,111000.0,High,32,4265.63,126675.42,21,94.3,54.4,63.3,Books,"[""Books""]",6.8,9,0.26,9,69.0,0.503,0
+CUST0312,Shreya Mehta,50,North,111000.0,High,34,6614.67,247675.39,158,57.3,57.8,100.0,Sports,"[""Groceries"", ""Electronics""]",3.4,6,0.36,24,73.1,0.525,0
+CUST0313,Naveen Chauhan,59,North,51900.0,Medium,28,3560.72,90501.08,269,27.4,47.6,45.3,Toys,"[""Electronics""]",2.5,0,0.67,48,41.0,0.425,0
+CUST0314,Amit Joshi,54,Central,19500.0,Low,15,7194.37,109623.04,162,56.3,25.5,54.8,Groceries,"[""Groceries"", ""Electronics""]",2.7,0,0.06,7,44.2,0.537,0
+CUST0315,Sunil Verma,58,Central,111000.0,High,30,755.99,24747.61,260,29.8,51.0,12.4,Home & Kitchen,"[""Home & Kitchen"", ""Clothing""]",5.7,4,0.21,10,33.3,0.527,0
+CUST0316,Pavan Bhat,48,Central,51900.0,Medium,37,7646.35,238547.52,102,72.5,62.9,100.0,Groceries,"[""Groceries""]",6.6,8,0.81,4,81.6,0.466,0
+CUST0317,Divya Pandey,54,East,51900.0,Medium,29,5306.61,165298.02,223,39.8,49.3,82.6,Groceries,"[""Groceries""]",1.5,5,0.15,44,57.7,0.628,1
+CUST0318,Naveen Gupta,25,Central,51900.0,Medium,22,3164.58,58255.06,59,84.1,37.4,29.1,Sports,"[""Toys"", ""Electronics"", ""Books""]",3.0,2,0.34,36,43.4,0.292,0
+CUST0319,Ramesh Sinha,43,East,111000.0,High,4,1737.8,8244.48,247,33.3,6.8,4.1,Books,"[""Books""]",7.2,2,0.86,44,19.3,0.461,0
+CUST0320,Suresh Sharma,23,North,19500.0,Low,20,3937.63,78387.0,128,65.4,34.0,39.2,Home & Kitchen,"[""Clothing""]",6.5,6,0.15,37,47.1,0.565,1
+CUST0321,Rohan Chauhan,31,North,111000.0,High,32,1717.55,47281.84,283,23.6,54.4,23.6,Sports,"[""Books"", ""Clothing""]",7.9,5,0.08,28,40.4,0.631,1
+CUST0322,Rajesh Joshi,26,North,111000.0,High,36,1497.39,50507.45,325,12.2,61.2,25.3,Electronics,"[""Electronics"", ""Groceries"", ""Beauty""]",6.1,8,0.48,4,38.5,0.715,1
+CUST0323,Meera Iyer,31,South,19500.0,Low,50,5015.34,242082.08,25,93.2,85.0,100.0,Toys,"[""Books"", ""Beauty""]",3.2,5,0.3,8,88.1,0.312,0
+CUST0324,Shreya Chauhan,54,South,19500.0,Low,4,4280.06,18888.32,131,64.6,6.8,9.4,Beauty,"[""Beauty"", ""Electronics"", ""Clothing""]",4.8,4,0.56,47,24.7,0.551,1
+CUST0325,Kavya Nair,59,West,19500.0,Low,27,5426.75,160789.05,353,4.7,45.9,80.4,Groceries,"[""Books"", ""Electronics""]",5.3,9,0.8,1,53.5,0.736,1
+CUST0326,Meera Rao,34,West,51900.0,Medium,17,7450.93,132337.42,196,47.1,28.9,66.2,Beauty,"[""Books"", ""Sports""]",0.7,6,0.14,0,45.4,0.723,1
+CUST0327,Swati Verma,52,West,19500.0,Low,12,4351.63,43988.31,281,24.1,20.4,22.0,Toys,"[""Groceries"", ""Electronics""]",4.4,0,0.58,39,25.2,0.531,0
+CUST0328,Preeti Rao,57,South,111000.0,High,22,4731.27,89580.97,154,58.4,37.4,44.8,Toys,"[""Electronics"", ""Toys"", ""Books""]",5.7,6,0.51,29,47.9,0.527,0
+CUST0329,Padma Patel,45,South,19500.0,Low,17,899.09,12800.84,133,64.1,28.9,6.4,Sports,"[""Clothing"", ""Sports""]",1.4,2,0.14,10,25.8,0.567,1
+CUST0330,Harish Verma,36,West,111000.0,High,10,5797.56,59765.26,227,38.7,17.0,29.9,Sports,"[""Sports""]",6.3,8,0.62,27,32.7,0.666,1
+CUST0331,Arun Agarwal,50,West,51900.0,Medium,54,3319.26,206279.36,189,49.0,91.8,100.0,Sports,"[""Home & Kitchen"", ""Beauty""]",4.7,5,0.27,43,83.2,0.34,0
+CUST0332,Rahul Sharma,29,Central,111000.0,High,1,7818.46,7611.43,265,28.4,1.7,3.8,Beauty,"[""Books"", ""Toys"", ""Home & Kitchen""]",7.6,8,0.49,11,17.2,0.832,1
+CUST0333,Divya Mehta,26,West,111000.0,High,22,6620.76,125896.82,134,63.8,37.4,62.9,Sports,"[""Beauty""]",0.4,4,0.08,38,49.6,0.55,0
+CUST0334,Swati Chauhan,50,Central,19500.0,Low,26,4275.35,113739.87,211,43.0,44.2,56.9,Toys,"[""Sports""]",2.2,6,0.46,25,47.4,0.459,0
+CUST0335,Nikhil Mehta,25,East,19500.0,Low,56,1161.14,73132.37,60,83.8,95.2,36.6,Electronics,"[""Books"", ""Groceries""]",4.9,3,0.31,12,66.1,0.268,0
+CUST0336,Smita Kumar,33,South,111000.0,High,59,6903.44,446682.98,364,1.7,100.0,100.0,Sports,"[""Books"", ""Groceries""]",2.4,6,0.82,7,73.3,0.584,1
+CUST0337,Sneha Pandey,23,West,19500.0,Low,18,6438.29,133571.63,364,1.7,30.6,66.8,Clothing,"[""Home & Kitchen"", ""Sports""]",5.7,0,0.06,27,43.4,0.568,1
+CUST0338,Vikram Mishra,48,South,51900.0,Medium,50,1639.76,74704.25,213,42.5,85.0,37.4,Books,"[""Electronics""]",6.1,6,0.42,29,56.6,0.509,0
+CUST0339,Vijay Reddy,52,South,51900.0,Medium,14,2503.17,30754.3,216,41.7,23.8,15.4,Beauty,"[""Home & Kitchen"", ""Toys""]",0.9,7,0.46,8,22.8,0.666,1
+CUST0340,Deepika Pandey,57,South,19500.0,Low,47,6388.58,345881.23,226,39.0,79.9,100.0,Clothing,"[""Beauty"", ""Toys""]",4.2,4,0.73,38,77.0,0.448,0
+CUST0341,Ganesh Patel,57,East,51900.0,Medium,29,1644.78,50704.78,131,64.6,49.3,25.4,Sports,"[""Beauty""]",4.1,1,0.57,30,43.0,0.359,0
+CUST0342,Mohan Sharma,47,North,19500.0,Low,12,7358.47,81623.53,76,79.5,20.4,40.8,Toys,"[""Sports"", ""Toys"", ""Beauty""]",3.0,4,0.67,20,42.1,0.415,0
+CUST0343,Nisha Mishra,64,West,111000.0,High,36,3511.31,138660.97,286,22.8,61.2,69.3,Electronics,"[""Clothing"", ""Toys"", ""Home & Kitchen""]",7.5,5,0.78,46,60.0,0.488,0
+CUST0344,Ramesh Joshi,48,North,111000.0,High,59,878.9,58391.3,277,25.2,100.0,29.2,Groceries,"[""Clothing"", ""Home & Kitchen""]",6.6,1,0.86,33,55.0,0.301,0
+CUST0345,Amit Agarwal,26,North,51900.0,Medium,35,6562.84,240263.57,156,57.9,59.5,100.0,Home & Kitchen,"[""Groceries"", ""Books""]",5.6,5,0.31,30,76.4,0.432,0
+CUST0346,Aditya Sharma,41,North,19500.0,Low,52,3113.38,174062.82,248,33.0,88.4,87.0,Books,"[""Books"", ""Toys"", ""Electronics""]",5.7,5,0.54,24,75.0,0.565,1
+CUST0347,Rekha Gupta,32,South,19500.0,Low,12,4306.69,49101.64,218,41.1,20.4,24.6,Home & Kitchen,"[""Toys"", ""Sports""]",3.7,0,0.84,11,28.8,0.432,0
+CUST0348,Pavan Sharma,31,Central,51900.0,Medium,7,1075.97,7648.37,190,48.7,11.9,3.8,Sports,"[""Sports"", ""Electronics"", ""Home & Kitchen""]",7.4,0,0.99,0,24.1,0.366,0
+CUST0349,Amit Chauhan,61,South,111000.0,High,29,220.16,6446.34,163,56.0,49.3,3.2,Books,"[""Beauty"", ""Toys"", ""Groceries""]",5.6,9,0.89,21,34.3,0.594,1
+CUST0350,Sneha Agarwal,59,South,51900.0,Medium,11,5176.28,64866.09,180,51.4,18.7,32.4,Books,"[""Toys"", ""Groceries""]",5.9,2,0.37,39,36.2,0.479,0
